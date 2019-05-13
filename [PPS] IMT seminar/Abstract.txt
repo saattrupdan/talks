@@ -1,0 +1,5 @@
+In 1931, Gödel published his famous incompleteness theorems, stating (more or less) that there are statements that we can neither prove nor disprove. But what about /interesting/ statements? Almost two decades later, he started the so-called "Gödel's program", whose goal was to conclusively decide all the interesting (ZFC-)undecidable statements known at the time. Today, we still haven't achieved Gödel's goal, despite significant ongoing research.
+
+The program studies "canonical subuniverses", called /inner models/, that have more structure than the total universe V, making it possible to answer more questions. I will focus on particular inner models called /core models/, that in some sense can replace V if we assume that there's a certain upper bound on 'how undecidable' statements are allowed to be.
+
+The talk will be non-technical and include tons of illustrations.

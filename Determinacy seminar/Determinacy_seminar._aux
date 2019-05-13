@@ -1,0 +1,42 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Basic descriptive set theory}{1}{section.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The Baire space}{1}{subsection.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Borel and projective hierachies}{1}{subsection.1.2}}
+\newlabel{}{{1.3}{2}{}{subsection.1.3}{}}
+\newlabel{@cref}{{[example][3][1]1.3}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Infinite game theory}{3}{section.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Basic game theory}{3}{subsection.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Determinacy}{3}{subsection.2.2}}
+\newlabel{}{{2.3}{3}{}{subsection.2.3}{}}
+\newlabel{@cref}{{[theorem][3][2]2.3}{3}}
+\newlabel{LebesgueTheo}{{2.3}{3}{}{subsection.2.3}{}}
+\newlabel{LebesgueTheo@cref}{{[theorem][3][2]2.3}{3}}
+\newlabel{}{{2.4}{4}{ZF}{subsection.2.4}{}}
+\newlabel{@cref}{{[proposition][4][2]2.4}{4}}
+\newlabel{}{{2.5}{4}{Gale-Stewart '53}{subsection.2.5}{}}
+\newlabel{@cref}{{[theorem][5][2]2.5}{4}}
+\newlabel{}{{2.6}{5}{Martin '75}{subsection.2.6}{}}
+\newlabel{@cref}{{[theorem][6][2]2.6}{5}}
+\newlabel{}{{2.7}{5}{Martin '70}{subsection.2.7}{}}
+\newlabel{@cref}{{[theorem][7][2]2.7}{5}}
+\newlabel{}{{2.8}{5}{Martin, Steel '85}{subsection.2.8}{}}
+\newlabel{@cref}{{[theorem][8][2]2.8}{5}}
+\newlabel{}{{2.9}{6}{Woodin '85}{subsection.2.9}{}}
+\newlabel{@cref}{{[theorem][9][2]2.9}{6}}

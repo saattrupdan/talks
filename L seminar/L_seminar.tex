@@ -1,0 +1,146 @@
+\newcommand{\mytitle}{G\"odel's constructible universe -- seminar}
+\input{/home/leidem/Dropbox/std_preamble.tex}
+\input{/home/leidem/Dropbox/art.tex}
+
+\section{Infinities}
+Before we start, we need a little prequisite, which I'm going to define informally here. In set theory we're very interested in infinities. In fact, it is often said that modern set theory is ``the study of the infinite''. We define the \textit{ordinals} as a natural continuation of the natural numbers. We thus start with the usual numbers
+\eq{
+0,1,2,3,\hdots
+}
+
+At the limit, we reach the first infinite ordinal, written as $\omega$. Then we can continue counting:
+\eq{
+0,1,2,3,\hdots\omega,\omega+1,\omega+2,\hdots
+}
+
+This procedure of taking limits can be repeated, and we end up with prima facie very large infinities:
+\eq{
+\omega,\omega+1,\hdots,\omega+\omega,\omega+\omega+1,\hdots,\omega\cdot\omega,\omega\cdot\omega+1,\hdots,\omega^{\omega^{\omega^{\reflectbox{$\ddots$}}}},\hdots
+}
+
+But here's the catch: these are \textbf{all countable}! However, we know that uncountable ordinals exist, so the first such one, denoted $\omega_1$, is then strictly bigger than all the above ones. The pattern continues. The \textit{class} of ordinals is then denoted $\on$.
+
+\pagebreak
+\section{Building a universe}
+Okay, so we want to build a universe. How does one even do that? What \textit{is} a universe even? We can think of a universe as a vague idea of ``the thing that always surrounds us''. One way to try to build the universe is to just start from the ``ground'' and keep building upwards.
+
+\qquad If any set should be the ``bottom'' in our universe, it has to be the empty set $\emptyset$. After that, we have to find some kind of procedure that keeps ``adding another layer of sets to the universe''. Our procedure is going to be applying the powerset $\mathcal PX$. We're going to do this by recursion. This leads us to the following definition.
+
+\defi[Preliminary]{
+The $i$'th \textit{universe level} $V_i$ is defined as $V_0:=\emptyset$ and $V_{n+1}:=\mathcal P V_n$ for all $n\in\omega$. Set $V_{\omega}:=\bigcup_nV_n$.
+}
+
+But then $V_\omega$ is our universe! Right..? Not quite, because $\mathcal PV_\omega$ still has strictly bigger cardinality than $V_\omega$. To continue, we need a slightly crazy generalization of the usual recursion over $\omega$; namely, recursion over $\on$. To enable this, we note that every ordinal $\alpha\in\on$ is either $0$, a successor ($\alpha=\beta+1$ for some $\beta\in\on$) or a limit ($\alpha=\bigcup_{\gamma<\alpha}\gamma$). For instance, $\omega$, $\omega+\omega$, $\omega_1$ are all limit ordinals. Now we can define our \textit{universe}.
+
+\defi{
+Let $\alpha\in\on$. Then the $\alpha$'th \textbf{universe level} $V_\alpha$ is defined recursively as $V_0:=\emptyset$, $V_{\alpha+1}:=\mathcal P V_\alpha$ and $V_\alpha:=\bigcup_{\gamma<\alpha}V_\gamma$ for $\alpha$ limit. Now define the \textbf{universe} as $V:=\bigcup_{\alpha\in\on}V_\alpha$.
+}
+
+Note that we're quantifying over $\on$ in the union, which formally doesn't make any sense. What we mean is that it simply \textit{abbreviates} that $x\in V$ iff $\exists\alpha\in\on:x\in V_\alpha$, as unions usually mean.\footnote{Technically, statements as ``$x\in\on$'' doesn't make any sense either, but this is again an abbreviation. Just think of it as the usual membership.} It's a consequence of our axioms of ZFC that every set lies in $V$.
+
+\pagebreak
+\section{A \textit{constructible} universe}
+Okay, we've now constructed ourselves a universe $V$, but that's not the \textit{only} one we can construct. Gödel constructed another universe, called $L$, that's built exactly as $V$, but instead of iterating the power set, we'll apply the \textit{definable powerset} $\mathcal DX$, which only contains all the subsets of $X$ which can be \textit{defined} by a formula $\varphi$ -- i.e. that $x\in X$ iff $\varphi(x)$ holds.\footnote{We note that this construction is highly non-trivial, as we want to define $\mathcal DX$ \textit{inside} mathematics, but the notion of definability is something which lies \textit{outside} mathematics.} We thus have a new universe:
+
+\defi{
+Let $\alpha\in\on$. Then define the levels $L_\alpha$ recursively as $L_0:=\emptyset$, $L_{\alpha+1}:=\mathcal DL_\alpha$ and $L_\alpha:=\bigcup_{\gamma<\alpha}L_\gamma$ for $\alpha$ limit. Then the \textbf{constructible universe} is given as $L:=\bigcup_{\alpha\in\on}L_\alpha$.
+}
+
+\qprop{
+Inside $L$, all axioms of $\zf$ holds.
+}
+
+This new universe doesn't look a whole lot different from $V$, but it is truly different. Firstly, we can \textit{prove} the axiom of choice. 
+
+\theo[$\zf$]{
+Inside $L$, axiom of choice can be proven.
+}
+\proof{
+We'll show the version of choice stating that every set can be wellordered. This is essentially because every set can be identified with its corresponding formula, so if we want to wellorder a given set, we can lexicographically order the formulas, which is possible as all formulas are finite by definition.
+}
+
+As for homological algebra in $L$, we have the following.
+
+\qtheo[Whitehead's problem]{
+Work inside $L$ and let $A$ be an abelian group. Then $\ext^1(A,\mathbb Z)=0$ implies that $A$ is free.
+}
+
+Whitehead's problem is independent of $\zfc$. Lastly, an example for the functional analysis people.
+
+\qtheo[Negation of Naimark's problem]{
+In $L$ there exists a $C^*$-algebra $\mathcal A$ with only one irreducible $*$-representation up to unitary equivalence and which isn't isomorphic to the compact operators on any Hilbert space.
+}
+
+Naimark's problem (the negation of the above) cannot be shown in $\zfc$, but we don't know if the above negation can be proven in $\zfc$ -- but it holds in $L$ though. It seems to be a pretty good place to live! But are we living there already? Is every set in $V$ definable? Or said in other words, is $V=L$? It turns out that we cannot show this.
+
+\theo{
+It cannot be decided in $\zfc$ whether or not $V=L$.
+}
+
+\section{Why people don't want to live inside $L$}
+There's been a lot of philosophical discussion on whether or not we should accept the axiom $V=L$, but most of the mathematicans are against it, on the basis that it's by definition \textit{restrictive} -- we should embrace every set without any definability discrimination.
+
+\qquad Scott made the point even more clear when he showed that he could \textit{prove} that $L$ didn't contain a certain class, called a \textit{measurable cardinal}. Let's dig into this business. Measurable cardinals is an instance of a \textit{large cardinal}.
+
+\qquad To be able to define the measurable cardinals, we need to define some other notions first. We start of with the notion of filters.
+
+\defi{
+A \textbf{filter} on a set $X$ is a set $F\subset\mathcal P(X)$, satisfying that
+\begin{enumerate}
+\item $X\in F$;
+\item $A\in F\land A\subset B\Rightarrow B\in F$;
+\item $A,B\in F\Rightarrow A\cap B\in F$.
+\end{enumerate}
+
+A \textbf{proper filter} is one satisfying $\emptyset\notin X$. An \textbf{ultrafilter} is then a maximal proper filter with respect to inclusion.\footnote{We note that the existence of ultrafilters requires choice.}
+}
+
+We think of elements $A\in F$ in a filter $F$ on $X$, as ``large'' subsets of $X$, which makes the above three axioms a little more intuitive.
+
+\exam{
+The boring examples of filters on a set $X$ is the \textit{trivial} filter $F:=\{X\}$ and the \textbf{principal filter}s $F_x:=\{A\subset X\mid x\subset A\}$ for some fixed $x\subset X$.
+}
+
+Say that a filter $F$ on $X$ is \textbf{$\kappa$-complete} for a cardinal $\kappa$, if it's closed under $\gamma$-many intersections, for every $\gamma<\kappa$. For instance, $\omega$-complete means that the filter is closed under finite intersections -- thus every filter is $\omega$-complete.
+
+\qprop{
+Let $F$ be a filter on $X$, where $|X|=\kappa$. Then if $F$ is $\kappa^+$-complete, where $\kappa^+$ denotes the next cardinal after $\kappa$, $F$ is principal.
+}
+
+If we thus want to work with non-boring filters, we cannot assume that the filter is $\kappa^+$-complete. But what if it's $\kappa$-complete? This leads to the definition of a measurable.
+
+\defi{
+A \textbf{measurable cardinal} $\kappa$ is a cardinal on which there exists a $\kappa$-complete non-principal ultrafilter.
+}
+
+The origin of the measurable cardinals lie in measure theory, where the ultrafilter ``corresponds'' to a 2-valued measure on the cardinal. The theorem is then that
+
+\qtheo[Scott]{
+There exists no measurable cardinals inside $L$.
+}
+
+However, \textit{does} there exist any measurable cardinals in $V$ even? It turns out that this cannot be proven in $\zfc$.\footnote{This is because if $\kappa$ is a measurable then $V_\kappa$ satisfies $\zfc$, so that the existence of $\kappa$ implies the consistency of $\zfc$. Thus if the existence of a measurable could be proven in $\zfc$, $\zfc$ would prove its own consistency, contradicting Gödel's second incompleteness theorem.} It can't even be proven that the existence of such is relatively consistent with $\zfc$.
+
+\qquad Nevertheless, the non-existence of such measurables in $L$ leads set theorists unsatisfied. The \textit{inner model program}, started in the 60's, tries to reconcile this problem by looking for new ``enlarged'' and ``canonical'' universes, which admits more of these large cardinals. The program has gotten increasingly sophisticated, and is now building on extremely complex ideas for the construction of these universes.
+
+\qquad To put things into more perspective we need the following definition:
+
+\defi{
+An \textbf{elementary embedding}$ j:M\to N$ between two universes $M$ and $N$ is an injection satisfying that given any formula $\varphi(v_1,\hdots,v_n)$ with free variables being $v_1,\hdots,v_n$, it holds that given $m_1,\hdots,m_n\in M$, $\varphi(x_1,\hdots,x_n)$ is true in $M$ iff $\varphi(j(x_1),\hdots,j(x_n))$ is true \textit{inside $M$}.
+}
+
+Now, we say that a \textbf{large cardinal axiom} is an assertion of the existence of a \textit{non-trivial} elementary embedding $j:V\to M$, where $M$ is a universe which contains all ordinals and which satisfies $\zf$. Here non-triviality means that the embedding is not the identity. So we can see such an elementary embedding as stating that $V$ is ``close to'' $M$. We have the following result.
+
+\qtheo{
+The existence of a measurable cardinal is equivalent to the existence of a non-trivial elementary embedding $j:V\to M$, with $M$ being any universe.
+}
+
+Hence the measurables are kind of ``weak'' large cardinals, as no restrictions has been put on the universe $M$. We can enlarge $M$ to produce stronger large cardinal axioms, but not too much though:
+
+\qtheo[Kunen inconsistency]{
+There is no non-trivial elementary embedding $j:V\to V$.
+}
+
+Just to give an example of a large cardinal which is stricly ``bigger'' than measurables, the existence of a \textbf{strong cardinal} is equivalent to the existence of a family $j_\alpha$ of non-trivial elementary embeddings $j_\alpha:V\to M_\alpha$ where $\alpha$ is an ordinal, such that $V_\alpha\subset M_\alpha$. We know that all the $M_\alpha$'s cannot be the same, as this would give contradict the above theorem by Kunen.
+
+\end{document}

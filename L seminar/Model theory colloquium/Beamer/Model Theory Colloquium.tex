@@ -1,0 +1,177 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usepackage[utf8x]{inputenc}
+\DeclareMathOperator{\proves}{\vdash}
+
+\title[Model Theory]{Model Theory \\ An introduction}
+\author{Dan Saattrup Nielsen}
+\date{October 25, 2013}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% TOC
+\begin{frame}{Contents}
+	\begin{itemize}
+		\item<1-4> Introduction
+		\item<2-3> Basic concepts
+		\item<3> Awesome theorems
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{So.. what \textit{is} model theory?}
+\begin{itemize}
+\pause\item Model theory is about \textit{models} and \textit{theories}
+\pause\item Classical model theory = algebra + logic
+\pause\item Syntax and semantics
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Contents}
+	\begin{itemize}
+		\item<0> Introduction
+		\item<1> Basic concepts
+		\item<0> Awesome theorems
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Languages}
+\begin{block}{Definition}
+A \textit{language} $\mathcal{L}$\pause\ is a set of relation symbols $(R_i)_{i\in I}$\pause, function symbols $(f_j)_{j\in J}$\pause\ and constant symbols $(c_k)_{k\in K}$.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Structures}
+\begin{block}{Definition}
+	Let $\mathcal{L}$ be a language.\pause\ Then an $\mathcal{L}$-\textit{structure} $\mathfrak{M}$ is a set $M$ along with
+\begin{itemize}
+	\pause\item an n-ary relation $R_i^\mathfrak{M}\subseteq M^n$ for each n-ary relation symbol $R_i\in\mathcal{L}$,
+	\pause\item an n-ary function $f_j^\mathfrak{M}:M^n\to M$ for each n-ary function symbol $f_j\in\mathcal{L}$
+	\pause\item a distinguished element $c_k^\mathfrak{M}\in M$ for each constant symbol $c_k\in\mathcal{L}$.
+\end{itemize}				
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Theories}
+Let $\mathcal{L}$ be a language.
+\pause
+
+\begin{block}{Definition}
+An $\mathcal{L}$-\textit{theory} $\mathcal{T}$ is just a set of $\mathcal{L}$-sentences.\pause\ $\mathcal{T}$ is called \textit{satisfiable} if it has a model.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Contents}
+	\begin{itemize}
+		\item<0> Introduction
+		\item<0> Basic concepts
+		\item<1> Awesome theorems
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Completeness (first kind)}
+	\pause	
+	\begin{block}{Definition}
+		A \textit{dense linear ordering} $(M,<)$ is an ordered set on which the ordering $<$ is
+		\begin{itemize}
+			\pause\item irreflexive
+			\pause\item transitive
+			\pause\item total
+			\pause\item dense.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Completeness (first kind)}	
+	Let $\mathcal{L}_{strict}:=\{<\}$ be the language of strict orderings.\\
+	
+	\pause
+	
+	\begin{block}{Proposition}
+		Let $\mathfrak{M}$, $\mathfrak{N}$ be two DLO's without endpoints\pause\ and let $\sigma$ be an $\mathcal{L}_{strict}$-sentence.\pause\ Then
+		\begin{align*}
+			\mathfrak{M}\models\sigma\Leftrightarrow\mathfrak{N}\models\sigma.
+		\end{align*}
+	\end{block}
+	
+	\pause	
+	
+	\begin{block}{Proposition}
+		Let $\mathfrak{M}$ be a DLO without endpoints.\pause\ There exists no $\mathcal{L}_{strict}$-sentence $\sigma$ such that $\mathfrak{M}\models\sigma$\pause\ iff the ordering on $\mathfrak{M}$ is complete.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Completeness (second kind)}
+	Let $\mathcal{L}$ be a language.\\
+	\pause
+		
+	\begin{block}{Definition}
+		A theory $\mathcal{T}$ is \textit{complete} if for every $\mathcal{L}$-sentence $\sigma$,\pause\ either $\mathcal{T}\models\sigma$ or $\mathcal{T}\models\lnot\sigma$.
+	\end{block}
+	
+	\pause
+	
+	\begin{block}{Theorem (Vaught's test)}
+		Let $\mathcal{T}$ be a satisfiable $\mathcal{L}$-theory with no finite models\pause\ and every model of cardinality $\kappa$ is isomorphic, for some cardinal $\kappa\geq|\mathcal{L}|$.\pause\ Then $\mathcal{T}$ is complete.
+	\end{block}
+	
+	\pause
+	
+	\begin{block}{Corollary}
+		\textsf{Vec}$_\infty$ is complete in $\mathcal{L}_{vec}$, the language of vector spaces.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Completeness (third kind)}
+	Let $\mathcal{L}$ be a language and $\mathcal{T}$ an $\mathcal{L}$-theory.\\
+	
+	\pause
+	
+	\begin{block}{Theorem (Gödels Completeness Theorem)}
+		Let $\sigma$ be an $\mathcal{L}$-sentence.\pause\ Then
+		\begin{align*}
+			\mathcal{T}\models\sigma\Leftrightarrow\mathcal{T}\proves\sigma.
+		\end{align*}
+	\end{block}
+	
+	\pause
+	
+	\begin{block}{Theorem (Compactness Theorem)}
+		$\mathcal{T}$ is satisfiable iff every finite $\Delta\subseteq\mathcal{T}$ is satisfiable.
+	\end{block}
+	
+	\pause
+	
+	\begin{block}{Corollary}
+		If $\mathcal{T}\models\sigma$ then $\Delta\models\sigma$ for some finite $\Delta\subseteq\mathcal{T}$.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Completeness (third kind)}
+	\begin{block}{Lemma}
+		Let $\sigma$ be a sentence in the language of rings.\pause\ Then \textsf{ACF}$_0\models\sigma$ if \textsf{ACF}$_p\models\sigma$ for all primes $p$.\pause\ In particular $\mathbb{C}\models\sigma$.
+	\end{block}
+	
+	\pause	
+	
+	\begin{block}{Theorem (Ax)}
+		Every injective polynomial $p:\mathbb{C}^n\to\mathbb{C}^n$ is surjective.
+	\end{block}
+\end{frame}
+
+\end{document}

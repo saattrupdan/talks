@@ -1,0 +1,176 @@
+\documentclass{beamer}
+\usetheme{Singapore}
+\setbeamertemplate{navigation symbols}{}
+
+% Packages
+  % General packages
+  \usepackage[utf8x]{inputenc} % Danish language support
+  \usepackage[light]{antpolt} % Provides awesome font
+  \usepackage{hyperref} % Provides \url and clickable links in the pdf
+  \usepackage{cleveref}	% Provides \cref and \Cref for including text before references
+  \usepackage{graphicx}	% Provides the \includegraphics[]{} command
+  \usepackage{comment} % Provides comment-environment for multi-line commenting
+  \usepackage{twoopt} % Allows adding commands with two optional arguments
+  \usepackage{setspace} % Provides onehalfspacing environment
+  \usepackage{enumitem}	% Provides control of spacing in lists
+  \usepackage{amsbsy} % Provides \boldsymbol command
+  \usepackage{lipsum} % Provides \lipsum command
+  \usepackage{apacite} % Provides bibliography style
+	
+  % Math packages
+  \usepackage{amsmath, amssymb, amsfonts} % Math symbolic jargon
+  \usepackage{amsthm} % Theorem environment
+  \usepackage{mathrsfs}	% Provides the \mathscr{} curly font
+  \usepackage{stmaryrd}	% Provides the \lightning symbol and semantics-brackets, among others
+  \usepackage{tikz} % Awesome diagrams
+  \usepackage{tikz-cd} % For making tree cds
+    \usetikzlibrary{matrix,arrows} % Matrices and arrows for style points
+    \usetikzlibrary{decorations.pathreplacing,calc,arrows.meta} % For making tree cds
+  %\usepackage[all]{xy} % Provides xymatrix environment for diagrams
+
+  % Beamer packages
+  \usepackage[absolute,overlay]{textpos}  % Placement of textblocks
+  \usepackage{mathdots}  % Provides \iddots command
+
+% Tree diagrams
+\tikzset{
+  tree/.style 2 args={
+    decorate,
+    decoration={
+      show path construction,
+      lineto code={
+        \draw[dotted,-] (\tikzinputsegmentfirst) --($(\tikzinputsegmentfirst)!.5!(\tikzinputsegmentlast)$);
+        \draw[-{Latex}] ($(\tikzinputsegmentfirst)!.5!(\tikzinputsegmentlast)$) --(\tikzinputsegmentlast) node [midway,right] {\small{$#1$}};
+        \draw[-] (\tikzinputsegmentfirst) --++ (105:0.65cm);
+        \draw[-] (\tikzinputsegmentfirst) --++ (75:0.65cm) node [midway, right] {\small{$#2$}};
+      }
+    }
+  }
+}
+
+% User-defined commands
+  % General things	
+  \newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+  \newcommand{\eqq}[1]{\begin{align*} #1\\ \end{align*}}
+  \newcommand{\pic}[1]{\begin{center}\includegraphics[scale=.5]{#1}\\\end{center}}
+  \newcommand{\pix}[2]{\begin{center}\includegraphics[scale=#2]{#1}\\\end{center}}
+  %\newcommand{\cd}[1]{\eq{\xymatrix@L=6pt{#1}}}
+  \renewcommand{\b}[1]{{\bf #1}}
+
+  % Declared operators
+  \DeclareMathOperator{\rud}{rud}
+  \DeclareMathOperator{\pred}{pred}
+  \DeclareMathOperator{\card}{card}
+  \DeclareMathOperator{\on}{On}
+  \DeclareMathOperator{\val}{val}
+  \DeclareMathOperator{\ran}{ran}
+  \DeclareMathOperator{\cod}{cod}
+  \DeclareMathOperator{\trcl}{trcl}
+  \DeclareMathOperator{\dom}{dom}	
+  \DeclareMathOperator{\rank}{rank}
+  \DeclareMathOperator{\im}{im}
+  \DeclareMathOperator{\ma}{MA}
+  \DeclareMathOperator{\hull}{Hull}
+  \DeclareMathOperator{\chull}{cHull}
+  \DeclareMathOperator{\id}{id}
+  \DeclareMathOperator{\cof}{cof}
+  \DeclareMathOperator{\Th}{Th}
+  \DeclareMathOperator{\sing}{Sing}
+  \DeclareMathOperator{\cl}{cl}
+  \DeclareMathOperator{\Int}{int}
+  \DeclareMathOperator{\ob}{Ob}
+  \DeclareMathOperator{\col}{Col}
+  \DeclareMathOperator{\sat}{Sat}
+  \DeclareMathOperator{\lh}{lh}
+  \DeclareMathOperator{\mor}{Mor}
+  \DeclareMathOperator{\ult}{Ult}
+  \DeclareMathOperator{\comp}{\textsf{Comp}}
+  \DeclareMathOperator{\zf}{\mathsf{ZF}}
+  \DeclareMathOperator{\zfc}{\mathsf{ZFC}}
+  \DeclareMathOperator{\ch}{\mathsf{CH}}
+  \DeclareMathOperator{\gch}{\mathsf{GCH}}
+  \DeclareMathOperator{\con}{Con}
+  \DeclareMathOperator{\cf}{cf}
+  \DeclareMathOperator{\crit}{crit}
+  \DeclareMathOperator{\pd}{pd}
+  \DeclareMathOperator{\ad}{\mathsf{AD}}
+  \DeclareMathOperator{\ac}{\mathsf{AC}}
+  \DeclareMathOperator{\xor}{\oplus}
+  \DeclareMathOperator{\nor}{\downarrow}
+  \DeclareMathOperator{\nand}{\uparrow}
+  \DeclareMathOperator{\biglor}{\bigvee}
+  \DeclareMathOperator{\bigland}{\bigwedge}
+  \DeclareMathOperator{\Lr}{\Leftrightarrow}
+  \DeclareMathOperator{\lr}{\leftrightarrow}
+  \DeclareMathOperator{\ip}{\perp\!\!\!\perp}
+  \DeclareMathOperator{\psubset}{\subsetneq}
+  \DeclareMathOperator{\psupset}{\supsetneq}
+  \DeclareMathOperator{\elsub}{\prec}
+  \DeclareMathOperator{\elsup}{\succ}
+  \DeclareMathOperator{\contr}{\lightning}
+  \DeclareMathOperator{\proves}{\vdash}
+  \DeclareMathOperator{\nproves}{\nvdash}
+  \DeclareMathOperator{\nmodels}{\nvDash}
+  \DeclareMathOperator{\forces}{\Vdash}
+  \DeclareMathOperator{\nforces}{\nVdash}
+  \DeclareMathOperator{\adj}{\dashv}
+  \DeclareMathOperator{\restr}{\upharpoonright}
+  \DeclareMathOperator{\ex}{\underline{ex}}
+  \DeclareMathOperator{\st}{\underline{st}}
+  \DeclareMathOperator{\sv}{\underline{sv}}
+  \DeclareMathOperator{\tl}{\underline{tl}}
+  \DeclareMathOperator{\tensor}{\otimes}
+  \DeclareMathOperator{\M}{\mathcal{M}}
+  \DeclareMathOperator{\N}{\mathcal{N}}
+  \DeclareMathOperator{\Q}{\mathcal{Q}}
+  \DeclareMathOperator{\R}{\mathcal{R}}
+  \DeclareMathOperator{\W}{\mathcal{W}}
+  \DeclareMathOperator{\F}{\mathcal{F}}
+  \DeclareMathOperator{\T}{\mathcal{T}}
+  \DeclareMathOperator{\U}{\mathcal{U}}
+  \DeclareMathOperator{\V}{\mathcal{V}}
+  \DeclareMathOperator{\G}{\mathcal{G}}
+  \DeclareMathOperator{\A}{\mathcal{A}}
+  \DeclareMathOperator{\pr}{pr}
+  \DeclareMathOperator{\Root}{root}
+  \DeclareMathOperator{\wfp}{wfp}
+  \DeclareMathOperator{\Def}{Def}
+
+  % Redeclared operators
+  \renewcommand{\subset}{\subseteq}
+  \renewcommand{\supset}{\supseteq}
+  \newcommand{\nsubset}{\nsubseteq}
+  \newcommand{\nsupset}{\nsupseteq}
+  \renewcommand{\hom}{\text{Hom}}
+  \renewcommand{\P}{\mathcal{P}}
+  \renewcommand{\S}{\mathcal{S}}
+  \renewcommand{\H}{\mathcal{H}}
+  \renewcommand{\succ}{\text{succ}}
+
+  % Convenient shortcuts
+  \newcommand{\vto}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+  \newcommand{\vtre}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+  \newcommand{\mto}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}}
+  \newcommand{\mtre}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}}
+  \newcommand{\bra}[1]{\langle #1\rangle}
+  \newcommand{\dbra}[1]{\llbracket #1 \rrbracket}
+  \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+  \newcommand{\abs}[1]{\left|#1\right|}
+  \newcommand{\normal}{\unlhd}
+  \newcommand{\ideal}{\unlhd}
+  \newcommand{\init}{\unlhd}
+  \newcommand{\core}{\mathfrak C}
+  \newcommand{\E}{\vec{E}}
+  \newcommand{\J}{\mathcal{J}}
+  \newcommand{\rel}{\ \text{rel}\ }
+  \newcommand{\pnormal}{\mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+  \newcommand{\pideal}{\mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+  \newcommand{\pinit}{\lhd}
+  \newcommand{\acts}{\curvearrowright}
+  \newcommand{\colimm}{\varinjlim}
+  \newcommand{\limm}{\varprojlim}
+  \newcommand{\set}{\textsf{Set}}
+  \newcommand{\godel}[1]{\ulcorner #1 \urcorner}
+  \newcommand{\game}[8]{\eq{\begin{array}{ccccccccc} \text{I} & #1 && #3 && #5 && #7\\ \text{II} && #2 && #4 && #6 && #8 \end{array}}}
+  \newcommand{\bgame}[8]{\eq{\begin{array}{ccccccccc} \text{I} & #1 & #3 & #5 & #7 \\ \text{II} & #2 & #4 & #6 & #8 \end{array}}}
+  \newcommand{\los}{{{\fontfamily{arial}\selectfont\L}o\' s}}

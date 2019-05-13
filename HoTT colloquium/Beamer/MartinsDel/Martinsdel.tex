@@ -1,0 +1,240 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usepackage[utf8x]{inputenc}
+\usepackage{proof}
+\usepackage{tikz} 
+%\usepackage{tikz-cd}
+\usetikzlibrary{matrix,arrows}
+\newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+\newcommand{\bra}[1]{\langle #1\rangle}
+\newcommand{\fst}{\mathsf{fst }}
+\newcommand{\snd}{\mathsf{snd }}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\SSS}{\mathbb{S}}
+\newcommand{\refl}{\mathsf{refl}}
+\newcommand{\base}{\mathsf{base}}
+\DeclareMathOperator{\dom}{dom}	
+\beamertemplatetransparentcoveredhigh
+
+\title[Homotopy Type Theory]{
+	An introduction to\\
+	Homotopy Type Theory\\
+}
+\author{Dan Saattrup Nielsen \& Martin Speirs}
+\date{}
+
+\begin{document}
+
+%\begin{frame}
+%	\titlepage
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Path Induction}
+Path induction is a key tool in HoTT.
+
+\pause\begin{block}{Path induction - Roughly}
+To prove $C(x,y,p)$ where $x,y : A$ and $p : x =_A y$ it suffices to prove $C(x,x,\refl_x)$ for all $x : A$
+\end{block}
+
+\pause\begin{block}{Path induction}
+Suppose $C(x,y,p)$ is a (dependent) type for each $x,y : A$ and $p : x =_A y$, and suppose there is a function $c : \prod_{x : A} C(x,x,\refl_x)$, \pause then there is a function $f : \prod_{x,y : A} \prod_{p : x =_A y} C(x,y,p)$.
+\end{block}
+
+\pause Does this make sense?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The Structure of $Id_A(x,y)$}
+	\begin{itemize}
+	\pause\item If $x : A$ then there is a special element $\refl_x : Id_A(x,x)$ ("unit element'')
+	\pause\item  If $p : Id_A(x,y)$ and $q : Id_A(y,z)$ then there is an element $r : Id_A(x,z)$\  (``Composition'')
+	\pause\item  For every element $p : Id_A(x,y)$ there is an element $p^{-1} : Id_A(y,x)$ \  (``Inverses'')
+	\pause\item Several ``group-like'' laws hold
+	\pause\begin{block}{``Groupoid'' structure}
+		Every type $A$ is a ``(weak) $\infty$-groupoid'' with objects $x : A$ and morphisms $A(x,y) := Id_A(x,y)$.
+	\end{block}
+	\end{itemize}
+	\pause Proof of inverses on board.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{ (Lower) Inductive types}
+Types can be \emph{inductively} defined. \pause For example, $\NN$, is defined by 
+	\begin{center}
+	\begin{tabular}{lr}
+	$0 : \mathbb{N}$ 					&  (element) \\
+	$\mathsf{succ} : \mathbb{N} \to \mathbb{N}$ 	&  (function) 
+	\end{tabular}
+	\end{center}
+\pause\begin{block}{Universal property / Recursion principle for $\NN$}
+Given any type $A$, and $a_0 : A$, and a map $f : A \to A$, \pause we get a unique map $rec_{(a_0,f)} : \NN \to A$ \pause such that
+	\begin{center}\begin{tikzpicture}[ampersand replacement=\&]
+  \matrix (m) [matrix of math nodes,row sep=2.5em,column sep=5em,minimum width=2em]
+  {
+     \NN \& \NN \\
+     A \& A \\};
+  \path[-stealth]
+    (m-1-1) edge node [above] {$\mathsf{succ}$} (m-1-2)
+            edge [dashed] node [left] {$rec$} (m-2-1)
+    (m-2-1) edge node [below] {$f$} (m-2-2)
+    (m-1-2) edge [dashed] node [right] {$rec$} (m-2-2);
+\end{tikzpicture}\end{center}
+	commutes, and such that $rec_{(a_0,f)}(0) = a_0$.
+\end{block}	
+	\begin{itemize}
+	\pause\item We say $\mathbb{N}$ is ``constructed freely'' from  $0:\mathbb{N}$ and $\mathsf{succ} : \mathbb{N} \to \mathbb{N}$
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{\emph{Higher} inductive types}
+	\begin{itemize}
+	\pause\item A new way to construct new types in HoTT is to construct ``free types on some generators'', called \textit{higher inductive types}
+	\pause\item Whereas ``normal'' inductive definitions (eg. $\NN$) use elements and functions, we allow \emph{paths}, i.e.\ elements of $Id_A(x,y)$.
+	
+	\pause\begin{block}{Example: Interval} The interval $I$ is constructed freely from $0_I:I$, $1_I:I$ and the \emph{path} $\mathsf{seg}: Id_I(0_I,1_I)$	
+	\end{block}
+%	\pause\begin{block}{Example: Circle} $\mathbb{S}^1$ is constructed freely from $\mathsf{base}:\mathbb{S}^1$ and $\mathsf{loop}: Id_{\SSS^1}(\mathsf{base}, \mathsf{base})$
+%	\end{block}
+	\pause\item Each higher inductive type comes equipped with its own universal property, similar to the one for $\NN$
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Higher Inductive definition of the Circle - $\SSS^1$}
+$\mathbb{S}^1$ is constructed freely from
+\begin{center}
+	\begin{tabular}{lr}
+	$base : \SSS^1$ 						&  (element) \\
+	$\mathsf{loop} : Id_{\SSS^1}(base,base)$ 	&  (\emph{path}!) 
+	\end{tabular}
+	\end{center}
+	
+\pause $\SSS^1$ is the ``free $\infty$-groupoid''  on these generators. 
+
+\begin{itemize}
+	\pause\item There is already a lot of structure implied by these generators for example
+			\begin{itemize}
+			\item $\refl_{\base} : Id_{\SSS^1}(\base,\base)$
+			\item $\mathsf{loop} \centerdot \mathsf{loop} : Id_{\SSS^1}(\base,\base)$
+			\item $\mathsf{loop}^{-1} : Id_{\SSS^1}(\base,\base)$
+			\item $\alpha : \mathsf{loop}^{-1} \centerdot \mathsf{loop} =_{\base =_{\SSS^1} \base} \refl_{\base}$
+			\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Universal property / Recursion principle for $\SSS^1$}
+
+As for $\NN$, since we defined $\SSS^1$ freely we get a universal mapping property, for mapping out of $\SSS^1$.
+
+	\pause\begin{block}{Universal property / Recursion principle for $\SSS^1$}
+ Given any type $A$, and $a_0 : A$, and a \emph{path} $p : Id_A(a_0,a_0)$, \pause we get a unique map $rec_{(a_0,p)} : \SSS^1 \to A$, \pause such that
+ 
+ \begin{center}\begin{tikzpicture}[ampersand replacement=\&]
+  \matrix (m) [matrix of math nodes,row sep=2.5em,column sep=5em,minimum width=2em]
+  {
+     1 \& \SSS^1 \\
+      \& A \\};
+  \path[-stealth]
+    (m-1-1) edge node [above] {$\mathsf{base}$} (m-1-2)
+            edge node [below] {$a_0$} (m-2-2)
+    (m-1-2) edge [dashed] node [right] {$\mathsf{rec}$} (m-2-2);
+\end{tikzpicture}\end{center}
+commutes, and such that ${rec_{(a_0,p)}}_*(loop) = p$
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Truncation}
+	 We can ``rank'' our types into a hierarchy according to which level is homotopically trivial. 
+	
+	\pause\begin{block}{Propositional truncation}
+	Let $A$ be a type. Then the \textit{propositional truncation} of $A$, written $||A||_{-1}$, is $A$ ``reduced to a logical proposition''
+	\end{block}
+	
+	\pause The type $|| A ||_{-1}$ is freely generated by the function $|a|:A\to||A||_{-1}$ and the paths $\prod_{a,b:A}a=_Ab$.
+	
+	\begin{itemize}
+	\pause\item Writing the usual axiom of choice: \\
+	$\left(\prod_{(X:F)}\left|\left|\sum_{(x:A(X))}P(x,X)\right|\right|_{-1}\right)\to\left|\left|\sum_{(g:\prod_{(X:F)}A(X))}\prod_{(X:F)}P(g(X),X)\right|\right|_{-1}$
+	\end{itemize}	
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{General Truncations}
+The hierarchy of types is divided into certain ``h-level'' accordingly
+	 \begin{itemize}
+	 \pause\item At the $-1$-level we have types that are either contractible (``have only one point'') or empty. 
+	 \pause\item At the $0$-level we have ``sets''
+	 \pause\item At the $1$-level we have ordinary groupoids ...
+	 \end{itemize}
+
+	
+	\pause\begin{block}{Set truncation, $\pi_0$}
+	Let $A$ be a type. Then the \textit{set truncation} is $A$ ``reduced to a set'', $\pi_0(A)$ also denoted $|| A ||_0$. 
+	\end{block}
+	\pause $\pi_0(A)$ is freely generated by the function $|a|:A\to \pi_0(A)$ and paths $\prod_{x,y:A}\prod_{p,q:Id(x,y)}p=q$.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Fundamental groups}
+	\begin{itemize}	
+	\pause\item A \textit{pointed type} is a type $A$ along with some $a:A$, denoted $\bra{A,a}$
+	\pause\item The \textit{loop space} of a pointed type $\bra{A,a}$, denoted $\Omega(A,a)$ is the pointed type $\bra{Id_A(a,a),\refl_a}$
+	\pause\item But $\Omega(A,a)$ is not a group! \pause We need it to be a \textit{set} first
+	\pause\item Thus $\pi_0(\Omega(A,a))$ is a set, and it can be shown to be a group
+	\end{itemize}
+	
+	\pause\begin{block}{Theorem}
+	The fundamental group of the circle is the integers:
+	\eq{
+	\pi_0(\Omega(\mathbb{S}^1,\mathsf{base})) = \mathbb{Z}.
+	}
+	\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}
+	Thank you for listening!
+	\ \\ \ \\ \ \\ \ \\ \ \\ \ \\
+	\begin{itemize}
+	\item More info: $\mathsf{HomotopyTypeTheory.org}$
+	\end{itemize}
+\end{frame}
+
+\end{document}

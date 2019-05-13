@@ -1,0 +1,5 @@
+Title:
+Truth
+
+Abstract:
+What is truth? Is absolute truth really something that makes sense? We'll investigate these questions and put an emphasis on mathematical truth. How does one even define that? Is it possible in mathematics as we know it? Would such a ``truth relation'' make sense? As for prerequisites, we only require basic knowledge of countability and the axiom of choice. The talk will be held in English.

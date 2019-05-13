@@ -1,0 +1,11 @@
+
+*** MODEL THEORY COLLOQUIUM ***
+
+- Basic stuff
+- Completeness theorem
+- Compactness theorem (proof w/ completeness theorem)
+
+**Applications**
+- T\models\phi => \Delta\models\phi for finite \Delta\subseteq T
+- For every prime p, \phi is true in some ACF of char p => C\models\phi
+- Every injective polynomial C^n -> C^n is surjective

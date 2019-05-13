@@ -1,0 +1,105 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usepackage[utf8x]{inputenc}
+\usepackage{proof}
+\usepackage{tikz} 
+%\usepackage{tikz-cd}
+\usetikzlibrary{matrix,arrows}
+\newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+\newcommand{\bra}[1]{\langle #1\rangle}
+\newcommand{\fst}{\mathsf{fst }}
+\newcommand{\snd}{\mathsf{snd }}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\SSS}{\mathbb{S}}
+\DeclareMathOperator{\dom}{dom}	
+\beamertemplatetransparentcoveredhigh
+
+\title[Homotopy Type Theory]{
+	An introduction to\\
+	Homotopy Type Theory\\
+}
+\author{Dan Saattrup Nielsen \& Martin Speirs}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% TOC
+\begin{frame}{What's going to happen?}
+	\begin{itemize}
+	\pause\item What is homotopy type theory?
+	\pause\item Basic type theory
+	\pause\item A proof of the axiom of choice
+	\pause\item Isomorphic objects are equal
+	\pause\item Higher inductive types
+	\pause\item Fundamental group of the circle is the integers
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What is homotopy type theory?}
+	\begin{itemize}
+	\item It's a \textit{synthetic} approach to homotopy theory
+	\pause\item It's a \textit{foundational} theory
+	\pause\item Connections with category theory, topology and logic
+	\pause\item Propositions as types
+	\pause\item HoTT = ITT + UA + HITs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Type theory}
+	\begin{itemize}
+	\pause\item Type theory is \textit{syntactical}
+	\pause\item Type theory is an \textit{independent} foundation - no logical foundation is needed
+	\pause\item Type theory structure:
+	\begin{itemize}
+		\pause\item Types $A$
+		\pause\item Terms $a:A$
+		\pause\item Dependent types $A(x)$
+		\pause\item Dependent terms $a(x):A(x)$
+		\pause\item $A\times B$, $A\to B$, $\Sigma_{(a:A)}B(a)$, $\Pi_{(a:A)}B(a)$, $\hdots$
+	\end{itemize}
+	\pause\item Type theory builds on \textit{rules} rather than \textit{axioms}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Axiom of choice}
+	\begin{itemize}
+	\pause\item Regular AC: ``Given a family of non-empty sets $F$, there exists a choice function $g$ with domain $F$, satisfying $g(X)\in X$ for all $X\in F$.''
+	\pause\item In regular logic:\\
+		$(\forall X\in F)(\exists x\in X)\Rightarrow$\\
+		$(\exists g)(``g\text{ function}"\land\dom g=F\land(\forall X\in F)(g(X)\in X))$
+	\end{itemize}
+	\pause\begin{block}{Theorem of Choice}
+	$\left(\prod_{(X:F)}\sum_{(x:X)}P(x,X)\right)\to\pause\left(\sum_{(g:\prod_{(X:F)}X)}\prod_{(X:F)}P(g(X),X)\right)$
+	\end{block}
+	\pause\begin{block}{Proof}
+	Take $\lambda f.\pause\bra{\lambda X.\pause\fst f(X),\pause\lambda X.\pause\snd f(X)}$.\pause\qed
+	\end{block}
+\end{frame}
+
+\begin{frame}{The Identity type}
+	\begin{itemize}
+	\pause\item The identity type $Id_A(x,y)$ (also written $x=_Ay$) for $x,y : A$ %, and even $x=y$) for $x,y:A$
+	\pause\item $p:Id_A(x,y)$ is a \textit{proof} of $x=y$, or a \textit{path} from $x$ to $y$	
+	\pause\item Special element, $refl_x : Id_A(x,x)$ (``constant path at $x$'')
+	\pause\item What is $Id_{Id_A}(p,q)$?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Univalence}
+	\begin{itemize}
+	\pause\item Isomorphism type $X\cong Y$ for $X,Y$ types:\\
+		$\sum_{(f:X\to Y)}\sum_{(g:Y\to X)}$\\
+		$\left(\prod_{(x:X)}g(f(x))=x\right)\times\left(\prod_{(y:Y)}f(g(y))=y\right)$
+	\pause\item $p:X\cong Y$ is a \textit{proof} of $X\cong Y$
+	\end{itemize}
+	\pause\begin{block}{Univalence axiom}
+		For all types $X,Y$ it holds that $(X=Y)\cong(X\cong Y)$; i.e. ``isomorphic objects are equal''.
+	\end{block}
+\end{frame}
+
+\end{document}

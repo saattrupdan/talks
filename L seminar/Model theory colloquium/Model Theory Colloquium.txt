@@ -1,0 +1,19 @@
+
+MODEL THEORY STUDENT COLLOQUIUM
+
+Definitions
+	- Formula/sentence
+	- Language
+	- Model
+	- Elementary embedding/substructure
+
+Theorems
+	- Tarski-Vaught test
+	- A\subset N => \exists X: A\subset X\preceq N with |X|<=|A|+|L|+\aleph_0
+	- Downwards LS
+	- (Just state) compactness theorem
+	- Upwards LS
+	- LS
+
+Applications
+	- "Paradox": Exists a countable model of a set theory, which proves the existence of an uncountable set as well

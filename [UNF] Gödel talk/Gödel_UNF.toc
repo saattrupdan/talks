@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Hvad er jeg?}{9}{0}{1}
+\beamer@sectionintoc {2}{Den gode id\IeC {\'e}}{16}{0}{2}
+\beamer@sectionintoc {3}{Matematik?}{23}{0}{3}
+\beamer@sectionintoc {4}{Den gode id\IeC {\'e} igen}{33}{0}{4}
+\beamer@sectionintoc {5}{Slutresultatet}{44}{0}{5}

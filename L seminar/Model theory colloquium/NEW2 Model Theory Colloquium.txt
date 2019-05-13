@@ -1,0 +1,10 @@
+Basic concepts
+
+DLO's w/o endpoints are elem. eq.
+	Completeness isn’t expressible (w/ proof)
+
+ACF_0 is completeVaught’s test	Theory of vector spaces over infinite fields is complete (w/ proof)
+
+Completeness theoremCompactness theorem (w/ proof via completeness)	Injective polynomial from C to C is surjective (w/ proof if time)
+
+Non-standard analysis

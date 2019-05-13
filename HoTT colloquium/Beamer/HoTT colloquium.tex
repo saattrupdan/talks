@@ -1,0 +1,34 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usepackage[utf8x]{inputenc}
+\usepackage{proof}
+\usepackage{tikz} 
+%\usepackage{tikz-cd}
+\usetikzlibrary{matrix,arrows}
+\newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+\newcommand{\bra}[1]{\langle #1\rangle}
+\newcommand{\fst}{\mathsf{fst }}
+\newcommand{\snd}{\mathsf{snd }}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\SSS}{\mathbb{S}}
+\DeclareMathOperator{\dom}{dom}	
+\beamertemplatetransparentcoveredhigh
+
+\title[Homotopy Type Theory]{
+	An introduction to\\
+	Homotopy Type Theory\\
+}
+\author{Dan Saattrup Nielsen \& Martin Speirs}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\include{Dansdel}
+\include{Martinsdel}
+
+\end{document}

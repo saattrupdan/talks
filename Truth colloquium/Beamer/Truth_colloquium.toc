@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{What is truth?}{2}{0}{1}
+\beamer@sectionintoc {2}{Math truth?}{7}{0}{2}
+\beamer@sectionintoc {3}{Tarski's truth}{17}{0}{3}
+\beamer@sectionintoc {4}{Strange truth}{30}{0}{4}
+\beamer@sectionintoc {5}{Recap}{42}{0}{5}

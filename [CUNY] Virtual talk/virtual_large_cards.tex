@@ -1,0 +1,334 @@
+\input{std_preamble.tex}
+\begin{document}
+
+\title{City University of New York Seminar Talk:\\
+        Level-by-level virtual large cardinals}
+\author{Dan Saattrup Nielsen}
+\date{February 15, 2019}
+\maketitle
+
+\abstract{
+  A virtual large cardinal is (usually) the critical point of a generic elementary embedding from a rank-initial segment of the universe into a transitive $M\subset V$, as introduced by Gitman and Schindler (2018). A notable feature is that all virtual large cardinals are consistent with $V=L$, and they've proven useful in characterising several properties in descriptive set theory. We'll work with these virtually $\theta$-measurable, $\theta$-strong and $\theta$-supercompact cardinals, where the $\theta$ in particular indicates that the generic embeddings have $H_\theta^V$ as domain, and investigate how these level-by-level virtual large cardinals relate both to each other and to the existence of winning strategies in certain games. This is work in progress and joint with Philipp Schlicht.
+}
+
+\section{Introduction}
+The study of generic large cardinals goes back a long way, at least back to the 70's. Back then it seems that the primary interest was the existence of \textit{precipitous} and \textit{saturated} ideals on small cardinals like $\omega_1$ and $\omega_2$. This moved to more general generic embeddings, both defined on $V$ but also on rank-initial segments of $V$ --- these were investigated by e.g. Donder and Levinsky (1989) and Ferber and Gitik (2010).
+
+\qquad The move to \textit{virtual} large cardinals was probably with the \textit{remarkable cardinals}, introduced in Schindler (2000), and virtual large cardinals were properly investigated in Gitman and Schindler (2018), where the key difference between the generics and the virtuals is that in the virtual case we require that the target model is a subset of the ground model.
+
+\qquad These large cardinals are unique in the sense that they allow us to work with embeddings as in the higher reaches of the large cardinal hierarchy, but being consistently below $V=L$, enabling equiconsistencies at these ``lower levels''.
+
+\qquad To take a few examples, Schindler (2000) has shown that the existence of a remarkable cardinal is equiconsistent with thte statement that the theory of $L(\mathbb R)$ cannot be changed by proper forcing, which was improved to semi-proper forcing in Schindler (2004). Wilson ($\infty$) has shown that the existence of a generic Vop\v enka cardinal is equiconsistent with
+\eq{
+  \zf + \godel{\text{${\bf\Sigma}^1_2$ is the class of all $\omega_1$-Suslin sets}} + \Theta = \omega_2,
+}
+
+and Schindler and Wilson ($\infty$) has shown that the existence of a virtually Shelah cardinal is equiconsistent with
+\eq{
+  \zf + \godel{\text{every universally Baire set of reals has the perfect set property}}.
+}
+
+We'll now state the basic lemmata and definitions we're going to use. Recall that a \textbf{weak $\kappa$-model} is a set $\M$ of size $\kappa$ satisfying that $\kappa+1\subset\M$ and $(\M,\in)\models\zfc^-$.
+
+\lemm[Ancient Kunen Lemma][lemm.kunen]{
+  Let $\kappa$ be regular, $\M,\N$ weak $\kappa$-models, $\theta\in(\kappa,o(\M))$ a regular $\M$-cardinal, and $\pi\colon\M\to\N$ an elementary embedding with $\crit\pi=\kappa$ and $H_\theta^{\M}\subset\N$. Then for every $X\in H_\theta^{\M}$ with $\card^{\M}(X)=\kappa$ it holds that $\pi\restr X\in\N$.
+}
+\proof{
+  Let $f\colon\kappa\to X$, $f\in\M$, be a bijection and note that $\pi(x)=\pi(f)(f^{-1}(x))$ for all $x\in X$, so it suffices that $f,\pi(f)\in\N$, which is true since $f\in H_\theta^{\M}\subset\N$.
+}
+
+\lemm[Countable embedding absoluteness][lemm.ctblabs]{
+  Let $\M,\N$ be transitive and assume that $\M$ is countable. Let $\pi\colon\M\to\N$ be an elementary embedding, $\P$ a transitive class with $\M,\N\in\P$ and
+  \eq{
+    \P\models\zf^-+\dc+\godel{\text{$\M$ is countable}},
+  }  
+  
+  and fix any finite $X\subset\M$. Then $\P$ has an elementary embedding $\pi^*\colon\M\to\N$ which agrees with $\pi$ on $X$ and $\crit\pi=\crit\pi^*$.
+}
+\proof{
+  Let $\{a_i\mid i<\omega\}\in\P$ be an enumeration of $\M$ and set $\M\restr n:=\{a_i\mid i<n\}$. Then, in $\P$, build the tree $\T$ of all partial isomorphisms between $\M\restr n$ and $\N$ for $n<\omega$, ordered by extension. Then $\T$ is illfounded in $V$ by assumption, so it's also illfounded in $\P$ since $\P\models\zf^-+\dc$. The branch gives the embedding $\pi^*$, and we can ensure that it agrees with $\pi$ on the critical point and finitely many values by adding these conditions to $\T$.
+}
+
+\defi{
+  Let $\theta>\kappa$ be regular. Then $\kappa$ is...
+  \begin{itemize}
+    \item \textbf{generically $\theta$-(power)-measurable} if there is a generic ($\kappa$-powerset preserving) embedding $\pi:H_\theta^V\to\N$ for some transitive $\N$ with $\crit\pi=\kappa$;
+    \item \textbf{generically $\theta$-prestrong} if it's generically $\theta$-measurable and $H_\theta^V\subset\N$;
+    \item \textbf{generically $\theta$-strong} if it's generically $\theta$-prestrong and $\pi(\kappa)\geq\theta$;
+    \item \textbf{generically $\theta$-supercompact} if it's generically $\theta$-strong and ${^{<\theta}}\N\cap V\subset\N$.\\
+  \end{itemize}
+
+  We further replace ``generically'' by \textbf{virtually} when $\N\subset V$. When we don't mention $\theta$ we mean that it holds for all $\theta>\kappa$, e.g. a generically measurable cardinal $\kappa$ is generically $\theta$-measurable for all regular $\theta>\kappa$.
+}
+
+So clearly, strong cardinals are virtually strong, measurable cardinals are virtually measurable and virtually $\theta$-measurable cardinals are generically $\theta$-power-measurable for all regular $\theta>\kappa$.
+
+\qquad Note that virtually strong cardinals are equivalent to remarkable cardinals.
+
+\section{Measurables and games}
+
+\defi{
+  Let $\kappa$ be an uncountable cardinal, $\theta>\kappa$ regular and $\gamma<\kappa^+$ an ordinal. Then define the \textbf{filter game} $\G^\theta_\gamma(\kappa)$ with $\gamma{+}1$ rounds:
+  \game{\M_0}{\mu_0}{\M_1}{\mu_1}{\cdots}{\cdots}{\M_\gamma}{\mu_\gamma}
+
+  Here $\M_\alpha\prec H_\theta$ is a weak $\kappa$-model for every $\alpha\leq\gamma$, $\mu_\alpha$ is an $\M_\alpha$-normal $\M_\alpha$-measure on $\kappa$ with $\ult(\M_\alpha,\mu_\alpha)$ being wellfounded for all $\alpha\leq\gamma$, and the $\M_\alpha$'s and $\mu_\alpha$'s are $\subset$-increasing. For limit ordinals $\alpha\leq\gamma$ we furthermore require that $\M_\alpha=\bigcup_{\xi<\alpha}\M_\xi$ and $\mu_\alpha=\bigcup_{\xi<\alpha}\mu_\xi$. Player II wins iff they could continue playing throughout all $\gamma{+}1$ rounds.
+}
+
+\defi{
+  Define the \textbf{C-game} $\C^\theta_\gamma(\kappa)$ as $\G^\theta_\gamma(\kappa)$ but where $\abs{\M_\alpha-H_\kappa}<\gamma$ for every $\alpha<\gamma$, i.e. that we only allow player I to add ${<}\gamma$ new elements to the models in each round. If $\gamma<\omega_1$ then at successors $\alpha{+}1$ we only require that $\M_{\alpha+1}$ and $\mu_{\alpha+1}$ extend $\M_\alpha$ and $\mu_\alpha$, $\M_{\alpha+1}$ is closed under complements of subsets of $\kappa$, and that $\mu_{\alpha+1}$ is an $\M_{\alpha+1}$-measure.
+}
+
+\theo[Schindler-N.]{
+  Let $\kappa<\theta$ be regular cardinals. Then $\kappa$ is generically $\theta$-measurable iff player II has a winning strategy in $\C^\theta_\omega(\kappa)$.
+}
+\proof{
+  $(\Leftarrow):$ Fix a winning strategy $\sigma$ for player II in $\C^\theta_\omega(\kappa)$. Let $g\subset\col(\omega,H^V_\theta)$ be $V$-generic and in $V[g]$ fix an elementary chain $\bra{\M_n\mid n<\omega}$ of weak $\kappa$-models $\M_n\prec H^V_\theta$ such that $H^V_\theta\subset\bigcup_{n<\omega}\M_n$, using that $\theta$ is regular and has countable cofinality in $V[g]$. Player II follows $\sigma$, resulting in a $H^V_\theta$-normal $H^V_\theta$-measure $\mu$ on $\kappa$.
+
+  \qquad We claim that $\ult(H^V_\theta,\mu)$ is wellfounded, so assume not, witnessed by a sequence $\bra{g_n\mid n<\omega}$ of functions $g_n\colon\kappa\to\theta$ such that $g_n\in H^V_\theta$ and
+  \eq{
+    \{\alpha<\kappa\mid g_{n+1}(\alpha)<g_n(\alpha)\}\in\mu.
+  }
+
+  Now, in $V$, define a tree $\T$ of triples $(f,M_f,\mu_f)$ such that $f\colon\kappa\to\theta$, $M_f$ is a weak $\kappa$-model, $\mu_f$ is an $M_f$-measure on $\kappa$ and letting $f_0<_{\T}\cdots<_{\T}f_n=f$ be the $\T$-predecessors of $f$,
+  \begin{itemize}
+    \item $\bra{M_{f_0},\mu_{f_0},\hdots,M_{f_n},\mu_{f_n}}$ is a partial play of $\C^\theta_\omega(\kappa)$ in which player II follows $\sigma$; and
+    \item $\{\alpha<\kappa\mid f_{k+1}(\alpha)<f_k(\alpha)\}\in\mu_{k+1}$ for every $k<n$.\\
+  \end{itemize}
+
+  Now the $g_n$'s induce a cofinal branch through $\T$ in $V[g]$, so by absoluteness of wellfoundedness there's a cofinal branch $b$ through $\T$ in $V$ as well. But $b$ now gives us a play of $C^\theta_\omega(\kappa)$ where player II is following $\sigma$ but player I wins, a contradiction. Thus $\ult(H^V_\theta,\mu)$ is wellfounded, so that the ultrapower embedding $\pi\colon H_\theta^V\to\ult(H_\theta^V,\mu)$ witnesses that $\kappa$ is generically $\theta$-measurable.
+
+  \qquad $(\Rightarrow):$ Assume that $\kappa$ is generically $\theta$-measurable. Let $\mathbb P$ be a forcing $\dot\mu$ a $\mathbb P$-name for an $H_\theta^V$-normal $H_\theta^V$-measure on $\kappa$ and $\dot\pi$ a $\mathbb P$-name for the associated ultrapower embedding. Define a strategy for player II in $\C_\omega^\theta(\kappa)$ as follows: Whenever player I plays $\M_n$ then fix some $\mathbb P$-condition $p_n$ such that, letting $\bra{f_i^n\mid i<k}$ enumerate all functions in $\M_n$ with domain $\kappa$,
+  \eq{
+    p_n\forces\godel{\check\mu\cap\M_n=\check\mu_n\cap\forall i<\check k\colon\dot\pi(\check f_i^n)(\check\kappa)=\check\alpha_i^n},
+  }
+
+  with $\mu_n,\alpha_i^n\in V$. Note here that we can ensure $\mu_n\in V$ because it's finite. Also, ensure that the $p_n$'s are $\leq$-decreasing. Assume now that $\ult(\M_\omega,\mu_\omega)$ is illfounded, witnessed by functions $g_n\in{^\kappa\M_\omega}\cap\M_\omega$ for $n<\omega$. Then $g_n=f_{i_n}^{k_n}$ for some $k_n,i_n<\omega$, and hence $p_{k_{n+1}}\forces\godel{\check\alpha_{i_{n+1}}^{k_{n+1}}<\check\alpha_{i_n}^{k_n}}$ for every $n<\omega$, so in $V$ we get an $\omega$-sequence of strictly decreasing ordinals, $\contr$.
+}
+
+Here's a near-analogous result for the $\G^\theta_\omega(\kappa)$ game.
+
+\theo[Schindler-N.]{
+  Let $\kappa<\theta$ be regular cardinals. If $\kappa$ is virtually $\theta$-prestrong then player II has a winning strategy in $\G^\theta_\omega(\kappa)$, and if player II has a winning strategy in $\G_\omega^\theta(\kappa)$ then $\kappa$ is generically $\theta$-power-measurable. In particular, $\G^\theta_\omega(\kappa)^L\sim\C^\theta_\omega(\kappa)^L$.
+}
+\proof{
+  The second statement is exactly like the $(\Leftarrow)$ direction in the previous theorem, so we show the first statement. Assume $\kappa$ is virtually $\theta$-prestrong and fix a regular $\theta>\kappa$, a transitive $\M\in V$, a poset $\mathbb P$ and, in $V^{\mathbb P}$, an elementary embedding $\pi\colon H_\theta^V\to\M$ with $\crit\pi=\kappa$. Fix a name $\dot\mu$ and a $\mathbb P$-condition $p$ such that
+  \eq{
+    p\forces\godel{\text{$\dot\mu$ is a weakly amenable $\check H_\theta$-normal $\check H_\theta$-measure with a wellfounded ultrapower}}.
+  }
+
+  We now define a strategy $\sigma$ for player II in $\G^\theta_\omega(\kappa)$ as follows. Whenever player I plays a weak $\kappa$-model $\M_n\prec H_\theta^V$, player II fixes $p_n\in\mathbb P$, an $\M_n$-measure $\mu_n$ and a function $\pi_n\colon\M_n\to\pi(\M_n)$ such that $p_0\leq p$, $p_n\leq p_k$ for every $k\leq n$ and that
+  \eq{
+    p_n\forces\godel{\dot\mu\cap\check\M_n=\check\mu_n\cap\check\mu_n=\dot\mu\restr\check\M_n}.\tag*{$(1)$}
+  }
+
+  Note that by the Ancient Kunen Lemma \ref{lemm.kunen} we get that $\pi\restr\M_n\in\M\subset V$, so such $\pi_n$ always exist in $V$. The $\mu_n$'s also always exist in $V$, by weak amenability of $\mu$. Player II responds to $\M_n$ with $\mu_n$. It's clear that the $\mu_n$'s are legal moves for player II, so it remains to show that $\mu_\omega:=\bigcup_{n<\omega}\mu_n$ has a wellfounded ultrapower. Assume it hasn't, so that we have a sequence $\bra{g_n\mid n<\omega}$ of functions $g_n\colon\kappa\to\M_\omega:=\bigcup_{n<\omega}\M_n$ such that $g_n\in\M_\omega$ and
+  \eq{
+    X_{n+1}:=\{\alpha<\kappa\mid g_{n+1}(\alpha)<g_n(\alpha)\}\in\mu_\omega\tag*{$(2)$}
+  }
+
+  for every $n<\omega$. Without loss of generality we can assume that $g_n,X_n\in\M_n$. Then $(2)$ implies that $p_{n+1}\forces\godel{\dot\pi(\check g_{n+1})(\check\kappa)<\dot\pi(\check g_n)(\check\kappa)}$, but by $(1)$ this also means that
+  \eq{
+    p_{n+1}\forces\godel{\check\pi_{n+1}(\check g_{n+1})(\check\kappa)<\check\pi_n(\check g_n)(\check\kappa)},
+  }
+
+  so defining, in $V$, the ordinals $\alpha_n:=\pi_n(g_n)(\kappa)$, $(3)$ implies that $\alpha_{n+1}<\alpha_n$ for all $n<\omega$, $\contr$. So $\mu_\omega$ has a wellfounded ultrapower, making $\sigma$ a winning strategy.
+}
+
+\ques{
+  If $\kappa$ is generically $\theta$-power-measurable, does player II then have a winning strategy in $\G^\theta_\omega(\kappa)$?
+}
+
+Now, most of the cardinals turn out to be equivalent in $L$ and also downwards absolute to $L$:
+\prop{
+  For any regular cardinal $\theta$, generically $\theta$-measurable cardinals are virtually $\theta$-prestrong in $L$.
+}
+\proof{
+  Let $\kappa$ be generically $\theta$-measurable, witnessed by a forcing poset $\mathbb P$ and a $V$-generic $g\subset\mathbb P$ such that, in $V[g]$, there's a transitive $\M$ and an elementary embedding $\pi\colon H_\theta^V\to\M$ with $\crit\pi=\kappa$. Restricting the embedding to $\pi\restr L_\theta\colon L_\theta\to L_{\pi(\theta)}$ we can now apply the Countable Absoluteness Lemma \ref{lemm.ctblabs} to $\pi\restr L_\theta$ to get that there exists an embedding $\pi^*\colon L_\theta\to L_{\pi(\theta)}$ in a generic extension of $L$, making $\kappa$ generically $\theta$-measurable in $L$. Clearly $L_\theta\subset L_{\pi(\theta)}\subset L$, making $\kappa$ in fact virtually $\theta$-prestrong in $L$.
+}
+
+\ques{
+  What happens in larger core models? It seems that in both $L[\mu]$ and $K$ below $0^\pistol$ we get that generically $\theta$-measurables are equivalent to virtually $\theta$-measurables, but the measurable in $L[\mu]$ is virtually measurable and not virtually $\kappa^{++}$-strong. What happens to winning strategies in $\G^\theta_\omega(\kappa)$ then?
+}
+
+\pix[.75]{gfx/virtual.pdf}
+
+The only non-trivial (direct) implication in the diagram is the following:
+
+\prop{
+  Every generically $\kappa^+$-power-measurable cardinal $\kappa$ is weakly compact.
+}
+\proof{
+  Let $\kappa$ be generically $\kappa^+$-power-measurable, witnessed by a forcing $\mathbb P$, a transitive $\N\in V^{\mathbb P}$ and an elementary $\pi\colon H_{\kappa^+}^V\to\N$ with $\pi\in V^{\mathbb P}$. Assume $\kappa$ is not a strong limit, so that we have a surjection $f\colon\p(\alpha\to\kappa$ for some $\alpha<\kappa$.
+
+  \qquad Then $\pi(f)$ continues to have domain $\p(\alpha)$ since $\p(\alpha)^V=\p(\alpha)^{\N}$ by $\kappa$-powerset preservation and $\pi(\alpha)=\alpha$ and so $\pi(f)\colon\p(\alpha\to\pi(\kappa)$ is surjective. But $\pi(A)=\pi``A=A$ by $\kappa$-powerset preservation of $\kappa$ and since $A\subset\alpha<\kappa$, so that
+  \eq{
+    \pi(f)(A)=\pi(f)(\pi(A))=\pi(f(A))=f(A)<\kappa,
+  }
+
+  meaning $\sup\ran\pi(f)=\kappa<\pi(\kappa)$, so $\pi(f)$ can't be surjective, $\contr$. So $\kappa$ is inaccessible.
+
+  \qquad Now let $\M\in H_{\kappa^+}^V$ be a transitive weak $\kappa$-model and let $\mu\in V[g]$ be the $H_{\kappa^+}^V$-measure induced by $\pi$. Then $\M\cap\mu\in V$ since $\mu$ is weakly amenable, which is an $\M$-normal $\M$-measure with a wellfounded ultrapower, showing that $\kappa$ is weakly compact.
+}
+
+Note that generically $\theta$-measurables aren't necessarily inaccessible, since $\omega_1$ can carry a precipitous ideal. Further, virtually $\theta$-measurables aren't in general virtually $\theta$-prestrong since letting $\kappa$ be the measurable cardinal in $L[\mu]$ we would get that $\ult(H_{\kappa^{++}}^{L[\mu]},\mu)$ has two measurable cardinals, a contradiction. The last two separation results in the diagram are proven below.
+
+\prop{
+  Assuming $\kappa$ is measurable, there's a generic extension of $V$ in which $\kappa$ is inaccessible and generically measurable, but not generically $\theta$-power-measurable.
+}
+\proof{
+  By Kunen (1978) we get that there are two generic extensions $V[g]$ and $V[g][h]$ such that $\kappa$ is measurable in $V[g][h]$ and, in $V[g]$, $\kappa$ is measurable and there exists a $\kappa$-Suslin tree --- in particular, $\kappa$ is not weakly compact in $V[g]$, so it can't be generically $\theta$-power-measurable. But it \textit{is} generically measurable, as witnessed by the measure on $\kappa$ in $V[g][h]$.
+}
+
+Note that the standard proof for measurable cardinals shows that virtually $\theta$-measurable cardinals are $\Pi^2_1$-indescribable --- it should be noted that we crucially need the ``virtual'' property for the proof to go through.
+
+\qquad Recall that $\kappa$ is \textbf{$\kappa^{++}$-tall} if there's an elementary embedding $j\colon V\to\M$ with $\crit j=\kappa$, ${^\kappa\M}\subset\M$ and $j(\kappa)>\kappa^{++}$. The following is shown in Holy-Schlicht (2018) for measurables, but the same proof goes through for virtually $\kappa^+$-measurables.
+
+\theo[Hamkins]{
+  Assuming $\kappa$ is a $\kappa^{++}$-tall cardinal, there's a forcing extension of $V$ in which $\kappa$ is not virtually $\kappa^+$-measurable, but becomes measurable in a further $\text{Add}(\kappa^+,1)$-extension.
+}
+
+This immediately gives us separation of virtual $\theta$-measurability and generic $\theta$-power-measurability (the ``power'' holds by $\kappa$-closure of $\text{Add}(\kappa^+,1)$).
+
+\section{Strongs and supercompacts}
+
+Note that strong cardinals and prestrong cardinals are always equivalent ``in the real world'', but the proof of this uses both (a) that the embeddings are defined on all of $V$ and (b) the Kunen inconsistency. In the virtual world, they might be different.
+
+\theo{
+  Let $\kappa<\theta$ be regular cardinals and assume that $\kappa$ is generically $\theta$-prestrong. Then one of the following holds.
+  \begin{enumerate}
+    \item $\kappa$ is generically $\theta$-strong; or
+    \item if $\kappa$ is a limit cardinal [inaccessible cardinal]\footnote{This will always be true if $V=L$.} then there's a proper class of remarkables in $H_\kappa^V$ and a limit cardinal [inaccessible cardinal] in the interval $(\kappa,\theta)$; or
+    \item $\kappa$ is virtually $\lambda$-rank-into-rank for some $\lambda\in(\kappa,\theta]$\footnote{And thus an $\omega$-iterable limit of $\omega$-iterables by Gitman and Schindler (2015).} and $\lambda$ is a limit of $\omega$-iterable limits of $\omega$-iterables.
+  \end{enumerate}
+}
+\proof{
+  Assume $(i)$ fails, meaning that there's a generic extension $V^{\mathbb P}$ and an elementary embedding $\pi\in V^{\mathbb P}$ such that $\pi\colon H_\theta^V\to\N$ for some transitive $\N\in V^{\mathbb P}$ with $H_\theta^V\subset\N$, $\crit\pi=\kappa$ and $\pi(\kappa)<\theta$.\\
+
+  \framebox{\textbf{Case 1}: $\sup_{n<\omega}\pi^n(\kappa)<\theta$}
+  
+  \qquad Set $\lambda:=\sup_{n<\omega}\pi^n(\kappa)<\theta$. We claim that $\kappa$ satisfies $(iii)$. It suffices to show that $\kappa$ is virtually $\lambda$-rank-into-rank, as then $\kappa$ is an $\omega$-iterable limit of $\omega$-iterable cardinals, a fact that is absolute between $V$ and $H_\nu^V$ for any cardinal $\nu>\kappa$, so the $\pi^n(\kappa)$'s would all be $\omega$-iterable limits of $\omega$-iterable cardinals as well.
+
+  \qquad To show that $\kappa$ is virtually $\lambda$-rank-into-rank we have to show that $\pi\restr H_\lambda^V$ is an elementary embedding $H_\lambda^V\to H_\lambda^V$. But if we let $\pi_n:=\pi\restr H_{\pi^n(\kappa)}\colon H_{\pi^n(\kappa)}^V\to H_{\pi^{n+1}(\kappa)}^V$ then we see that $\dom\pi_n\prec\dom\pi_{n+1}$, $\codom\pi_n\prec\codom\pi_{n+1}$ and $\pi_n\subset\pi_{n+1}$, so that $\pi\restr H_\theta^V=\bigcup_{n<\omega}\pi_n$ is an elementary embedding from $\bigcup_{n<\omega}\dom\pi_n=H_\lambda^V$ to $\bigcup_{n<\omega}\codom\pi_n=H_\lambda^V$.
+
+  \framebox{\textbf{Case 2}: $\sup_{n<\omega}\pi^n(\kappa)=\theta$}
+
+  \qquad In this case we get $(iii)$ since the argument in Case 1 shows that $\theta$ being a closure point implies that $\pi\colon H_\theta^V\to H_\theta^V$. Again Gitman and Schindler (2015) yields that $\kappa$ and all the $\pi^n(\kappa)$'s are $\omega$-iterable limits of $\omega$-iterable cardinals, giving the wanted conclusion.l
+
+  \framebox{\textbf{Case 3}: $\sup_{n<\omega}\pi^n(\kappa)>\theta$}
+
+  \qquad We claim that we get $(ii)$, so assume that $\kappa$ is a limit cardinal [inaccessible cardinal]. Note that $\pi(\kappa)<\theta$,\footnote{We cannot have that $\pi(\kappa)\geq\theta$ as we are assuming that $(i)$ fails.} so that $\pi(\kappa)<\theta$ is a limit cardinal [inaccessible cardinal] in $H_\theta^V$ and thus also in $V$, so it remains to show that there's a proper class of remarkables in $H_\kappa^V$. Note that $H_\kappa^V\prec H_{\pi(\kappa)}^V$ and that $H_{\pi(\kappa)}^V\prec_1 V$ since $\pi(\kappa)$ is a cardinal. Now $\kappa$ is virtually $\nu$-strong for every regular (equivalently $H_{\pi(\kappa)}^V$-regular) $\nu\in(\kappa,\pi(\kappa))$, which is a $\Delta_0$-statement in $\{H_{\nu^+}^V\}$ and hence downwards absolute to $H_{\pi(\kappa)}^V$ as $\pi(\kappa)$ is a limit cardinal. But this means that $\kappa$ is remarkable in $H_{\pi(\kappa)}^V$, so that there's a proper class of remarkables in $H_\kappa^V$.
+}
+
+So, at least if $\kappa$ is a limit cardinal and $\theta\leq\kappa^{+\omega}$ then $\kappa$ is generically $\theta$-prestrong iff it's generically $\theta$-strong. Applying the above theorem in $L$ this shows that generically $\theta$-measurables are equiconsistent with virtually $\theta$-strongs, for every $\theta$.
+
+\ques{
+  Is every generically $\theta$-prestrong also generically $\theta$-strong? In other words, do $(ii)$ and $(iii)$ in the above theorem imply that $\kappa$ is generically $\theta$-strong, or can we find an example of a generically $\theta$-prestrong cardinal satisfying either $(ii)$ or $(iii)$ which isn't generically $\theta$-strong?
+
+  \qquad [If $0^\sharp$ exists then letting $(\kappa,\lambda)$ be the lexicographically least such that $\kappa$ is virtually $\lambda$-rank-into-rank and virtually $\lambda^+$-prestrong in $L$, if $\kappa$ waas virtually $\lambda^+$-strong in $L$ then $L_\kappa\prec_2 L_{\lambda^+}$, so that $L_\kappa$ has a $\bar\kappa$ which is $\bar\lambda$-rank-into-rank and $\bar\lambda^+$-prestrong, which is absolute to $L$, a contradiction. So $\theta$-prestrong doesn't in general imply $\theta$-strong.]
+}
+
+We now turn to the supercompacts. The proof of the following theorem is basically Gitman's proof that virtually strongs are virtually supercompact, and so we contribute it to her.
+
+\theo[Gitman]{
+  Let $\kappa<\theta$ be regular cardinals and assume that $\kappa$ is virtually $(2^{<\theta})^+$-strong. Then $\kappa$ is virtually $\theta$-supecompact, and if we furthermore assume $\theta=\kappa^{+\alpha}$ for some $\alpha<\kappa$ then $\kappa$ is a limit of $\lambda$ such that $\lambda$ is virtually $\lambda^{+\alpha}$-supercompact.
+}
+\proof{
+  Let $\kappa$ be virtually $(2^{<\lambda})^+$-strong, witnessed by a generic elementary embedding $\pi\colon H_{(2^{<\theta})^+}^V\to\M$ such that $\crit\pi=\kappa$, $\pi(\kappa)\geq(2^{<\theta})^+$, $\M\in V$ transitive and $H_{(2^{<\theta})^+}^V\subset\M$. Consider the restriction
+  \eq{
+    \pi\restr H_\theta^V\colon H_\theta^V\to\pi(H_\theta^V)=H_{\pi(\theta)}^{\M},
+  }
+
+  which makes sense as $H_\theta^V\in H_{(2^{<\theta})^+}^V$. Note that
+  \eq{
+    \M\models\godel{\text{$H_{\pi(\theta)}$ is closed under ${<}\theta$-sequences}}
+  }
+
+  and that $H_\theta^V\in\M$. By the Countable Absoluteness Lemma \ref{lemm.ctblabs} we get that, in $\M^{\col(\omega, H_\theta^{\M})}$, there's an elementary embedding $\pi^*\colon H_\theta^V\to H_{\pi(\theta)}^V$ with $\crit\pi^*=\kappa$ and $\pi^*(\kappa)\geq(2^{<\theta})^+$. Define
+  \eq{
+    X:=\theta{+}1\cup\{x\in H_{\pi(\theta)}^{\M}\mid\exists y\in H_\theta^V\exists p\in\col(\omega,H_\theta^{\M}\colon p\forces\dot\pi^*(\check y)=\check x\}
+  }
+
+  and note that $X\in M\subset V$, $\pi``H_\theta^V\subset X$ and $\card^{\M}(X)=2^{<\theta}$. Fix furthermore $\overline{\N}\prec H_{\pi(\theta)}^{\M}$, $\overline\N\in\M$, such that $X\subset\overline\N$ and
+  \eq{
+    \M\models\godel{\text{$\overline\N$ is closed under ${<}\theta$-sequences}};
+  }
+
+  we can choose such an $\overline\N$ of $\M$-cardinality $(2^{<\theta})^{<\theta}=2^{<\theta}$. Let $\varphi\colon\overline\N\cong\N$ be the transitive collapse of $\overline\N$ and note that $\N$ is still closed under ${<}\theta$-sequences in $\M$, making $\N\in H_{(2^{<\theta})^+}^{\M}$.
+
+  \qquad Note that $H_{(2^{<\theta})^+}^{\M}=H_{(2^{<\theta})^+}^V$ as $\M\subset V$ and $H_{(2^{<\omega})^+}^V\subset\M$. That $\N$ is closed under ${<}\theta$-sequences is absolute between $\M$ and $H_{(2^{<\theta})^+}^{\M}=H_{(2^{<\theta})^+}^V$, so $\N$ \textit{is} really closed under ${<}\theta$-sequences.
+
+  \qquad Define, in $\M^{\col(\omega,H_\theta^{\M})}$, the elementary embedding $\iota\colon H_\theta^V\to\overline\N$ as $\iota(x):=\pi(x)$ for every $x\in H_\theta^V$, which makes sense as $\pi``H_\theta^V\subset X\subset\overline\N$, and $\iota$ is elementary since $\overline\N\prec H_{\pi(\theta)}^{\M}$. We can then define the composition embedding $j\colon H_\theta^V\to\N$ as follows:
+  \cd{
+    H_\theta^V\ar[rr]^\iota\ar[drr]_j && \overline\N\ar[d]^\varphi_\cong\\
+    && \N
+  }
+
+  It remains to see that $\crit j=\kappa$ and that $j(\kappa)\geq\theta$. To see that $\crit j=\kappa$ note that $\crit\iota=\crit\pi^*=\kappa$ and that everything below $\theta{+}1$ is fixed by $\theta$ as we included $\theta{+}1$ in $X$. Also, $j(\kappa)=(\varphi\circ\iota)(\kappa)=\varphi(\pi^*(\kappa))\geq\theta$, for the same reasons.
+
+  \qquad This shows that $\kappa$ is virtually $\theta$-supercompact both in $V$ and in $\M$, so if $\theta=\kappa^{+\alpha}$ then $\kappa$ is a limit of $\lambda$ such that $\lambda$ is $\lambda^{+\alpha}$-supercompact.
+}
+
+\ques{
+  Are generically $\theta$-strongs always generically $\theta$-supercompact? Maybe in $L$?
+}
+
+\section{Varying $\theta$}
+
+\theo{
+  Let $\alpha<\kappa$ and assume that $\kappa$ is generically $\kappa^{+\alpha+2}$-measurable. Then\todo{Can we replace ``prestrong'' with ``strong'' here, as $L_{\theta^+}$ can see that $\kappa$ is virtually $\theta$-strong?}
+  \eq{
+    L_\kappa\models\godel{\text{There's a proper class of $\lambda$ which are virtually $\lambda^{+\alpha+1}$-prestrong}}.
+  }
+}
+\proof{
+  Write $\theta:=\kappa^{+\alpha+1}$. Then by the above we get that either $\kappa$ is generically $\theta^+$-strong in $L$ or otherwise, in particular, $L_\kappa$ thinks that there's a proper class of remarkables. In the second case we also get that $L_\kappa$ thinks that there's a proper class of $\lambda$ such that $\lambda$ is virtually $\lambda^{+\alpha+1}$-prestrong and we'd be done, so assume the first case. Then $L_\kappa\prec_2 L_{\theta^+}$, so define for each $\xi<\kappa$ the sentence $\psi_\xi$ as
+  \eq{
+    \psi_\xi:\equiv\exists\lambda<\xi\colon\godel{\text{$\lambda$ is virtually $\lambda^{+\alpha+1}$-prestrong}}.
+  }
+
+  Then $\psi_\xi$ is $\Sigma_2(\{\alpha,\xi\})$ since being virtually $\beta$-prestrong is a $\Delta_2(\{\beta\})$-statement. As $L_{\theta^+}\models\psi_\xi$ for all $\xi<\kappa$ we also get that $L_\kappa\models\psi_\xi$ for all $\xi<\kappa$, which is what we wanted to show.
+}
+
+This in particular shows that the generically $\kappa^{+\alpha+1}$-measurable cardinals $\kappa$ form a strict hierarchy whenever $\alpha<\kappa$.
+
+\qquad Recall that $\kappa$ is \text{$\omega$-Ramsey} if player I doesn't have a winning strategy in $\G_\omega^\theta(\kappa)$ for all regular $\theta>\kappa$.
+
+\theo{
+  If $\kappa$ is generically $\kappa^{++}$-measurable then
+  \eq{
+    L_\kappa\models\godel{\text{There's a proper class of $\omega$-Ramseys}}.
+  }
+}
+\proof{
+  It holds that $\kappa$ is virtually $\kappa^{++}$-prestrong in $L$ and so in particular virtually $\kappa^+$-measurable in $L$. We can therefore fix a forcing $\mathbb P$ such that, in $V^{\mathbb P}$, there's an elementary embedding $j\colon L_{\kappa^+}\to L_\alpha$ for $\alpha\in(\kappa^+,\kappa^{++})$ and $\crit j=\kappa$. We will show that $\kappa$ is $\omega$-Ramsey in $L_\alpha$, as then \L o\' s' Theorem implies the wanted conclusion.
+
+  \qquad Let $\theta>\kappa$ be an $L_\alpha$-regular $L_\alpha$-cardinal and fix a strategy $\sigma\in L_\alpha$ for player I in $\G_\omega^\theta(\kappa)^{L_\alpha}$. We need to show that $L_\alpha$ sees that $\sigma$ isn't winning. Since player II is winning $\G_\omega^{\kappa^{++}}(\kappa)^L$, as $\kappa$ is virtually $\kappa^{++}$-prestrong, we can fix such a winning strategy $\tau$.
+
+  \qquad Since $\alpha<\kappa^{++}$ we may respond to $\sigma$ with $\tau$, generating a play $\sigma*\tau$ in which $\sigma$ loses. We have to show that $\sigma*\tau\in L_\alpha$. But all the $\tau$-responses in this play are measures on $\kappa$ and so they're all elements of $L_{\kappa^+}$. As the play is only an $\omega$-sequence we then get that $\sigma*\tau\in L_{\kappa^+}\subset L_\alpha$ and we're done.
+}
+
+\theo{
+  If $\kappa$ is an $\omega$-Ramsey cardinal then, in $L$, $\kappa$ is a limit of $\lambda$ such that $\lambda$ is virtually $\lambda^+$-measurable.
+}
+\proof{
+  As being $\omega$-Ramsey is downwards absolute in $L$ by Holy and Schlicht (2018), we may without loss of generality assume that $V{=}L$. Let $\theta:=\kappa^{++}$ and fix a weak $\kappa$-model $\M\prec H_\theta$ with $H_\kappa\subset\M$, a transitive weak $\kappa$-model $\N=L_\alpha$ and a $\kappa$-powerset preserving elementary embedding $j\colon\M\to\N$ with $\crit j=\kappa$, which without loss of generality is an ultrapower map. All of these exist by $\omega$-Ramseyness of $\kappa$.
+
+  \qquad We'll now show that $\kappa$ is virtually $\kappa^+$-measurable in $\N$. Note that $\M\models\godel{\text{$H_{\kappa^+}$ exists}}$ since $\M\prec H_{\kappa^{++}}$ and so we also get that $\N\models\godel{\text{$H_{\kappa^+}$ exists}}$ since $\kappa$-powerset preservation of $j$ implies that $(H_{\kappa^+})^{\M}=(H_{\kappa^+})^{\N}$. Let $\pi\colon(H_{\kappa^+})^{\N}\to L_\beta$ be the composition
+  \eq{
+    (H_{\kappa^+})^{\N}=(H_{\kappa^+})^{\M}\to j((H_{\kappa^+})^{\M})\cong L_\beta,
+  }
+
+  with the first map being $j\restr(H_{\kappa^+})^{\M}$ and the second map being the transitive collapse. Note that $\beta<\alpha$ so that $L_\beta\in\N$. Since $\pi\in V^{\col(\omega,(H_{\kappa^+})^{\N})}$ we get by the Countable Absoluteness Lemma \ref{lemm.ctblabs} that there's a $\pi^*\in\N^{\col(\omega,(H_{\kappa^+})^{\N})^{\N}}$ with $\pi^*\colon(H_{\kappa^+})^{\N}\to L_\beta$ and $\crit\pi^*=\crit\pi=\kappa$. This shows that
+  \eq{
+    \N\models\godel{\text{$\kappa$ is virtually $\kappa^+$-measurable}},
+  }
+
+  which by \L o\'s' Theorem and that $j$ is an ultrapower map by a normal measure implies that
+  \eq{
+    \M\models\godel{\text{$\kappa$ is a limit of $\lambda$ which are virtually $\lambda^+$-measurable}},
+  }
+
+  so that $\M\prec H_{\kappa^{++}}$ and the fact that being virtually $\lambda^+$-measurable is $\Sigma^2_1$ implies that $\kappa$ really \textit{is} a limit of such $\lambda$.
+}
+
+\end{document}

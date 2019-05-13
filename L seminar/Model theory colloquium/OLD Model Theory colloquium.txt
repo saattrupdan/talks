@@ -1,0 +1,15 @@
+
+MODEL THEORY STUDENT COLLOQUIUM
+
+- Define:
+	- Language (def 5.1)
+	- Model (def 5.3)
+	- Elementarily equivalent (def 6.9)
+	- Partial isomorphism (def 6.11)
+	- Back-and-forth property (def 6.11)
+	
+- Prove:
+	- Exist partial isoms between M and N w/ back-n-forth -> M elm.eq. N (prop 6.12)
+	- Any two DLO's w/o endpoints are elm.eq. (lemma 6.13)
+	- Completeness can't be described in first-order logic (corollary 6.14)
+	

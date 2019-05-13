@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usepackage[utf8x]{inputenc}
+\DeclareMathOperator{\proves}{\vdash}
+\renewcommand{\models}{\vDash}
+
+\title[Gödels konstruerbare univers]{En kort introduktion til\\ Gödels konstruérbare univers}
+\author{Dan Saattrup Nielsen}
+\date{14. marts, 2014}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+% TOC
+\begin{frame}{Hvad kommer der til at ske?}
+	\begin{itemize}
+		\pause\item Lidt basal mængdelære
+		\pause\item Et overblik
+		\pause\item Konstruktion af det konstruérbare univers $L$
+		\pause\item $Con(ZF)\Rightarrow Con(ZF+(V=L))$
+		\begin{itemize}
+		\pause\item ``Verden bliver ikke et dårligere sted ved at lade $L$ være vores univers"
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Lidt basal mængdelære}
+	Ordinalerne $\textsf{On}$.\\\ \\
+	
+	\pause\begin{block}{Sætning}
+		Alle ordinaler $\alpha$ optræder på netop én af følgende former:
+		\begin{itemize}
+			\item $\alpha=0$
+			\item $\alpha=\beta+1$, hvor $\beta\in\textsf{On}$
+			\item $\alpha=\sup_{\beta<\alpha}\beta$
+		\end{itemize}
+	\end{block}\ \\
+	
+	\pause Det normale univers $V$.
+\end{frame}
+
+\begin{frame}{ZFC}
+	ZFC består (uformelt) af aksiomerne:
+	\begin{enumerate}		
+		\pause\item De naturlige tal er en mængde
+		\pause\item Hvis $x$ er en mængde, så er $\{y\in x\mid\varphi(y)\}$ en mængde
+		\pause\item Hvis $x$ er en mængde, så er $\bigcup x$ en mængde
+		\pause\item Hvis $x$ er en mængde, så er $\mathcal{P}(x)$ en mængde
+		\pause\item Hvis $f$ er en funktion med en mængde $x$ som domæne, så er billedet af $f$ en mængde;
+		\pause\item Fra en familie af mængder kan vi konstruere en mængde med netop ét element fra hver mængde i familien
+		\pause\item To mængder er ens hvis og kun hvis de har samme elementer
+		\pause\item Alle mængder ligger i $V$
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Fugleperspektiv på projektet}
+	\begin{itemize}
+		\pause\item Konstruktion af det konstruérbare univers $L$
+		\pause\item Bevis seje ting i $L$, som man ikke kan bevise i $V$
+		\begin{itemize}
+			\pause\item Udvalgsaksiomet
+			\pause\item Kontinumshypotesen
+			\pause\item Uendelig-kombinatoriske principper $\diamondsuit$, $\diamondsuit^+$
+			\pause\item Bruge ovenstående til at etablere $Con(ZF)\Rightarrow Con(ZFC+GCH+\diamondsuit+\diamondsuit^+)$
+		\end{itemize}
+		\pause\item Hvorfor vil man ikke bruge $L$ i stedet for $V$?
+		\pause\item Videre perspektivering og \textit{det store åbne problem}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Vi bygger et univers}
+\begin{itemize}
+\pause\item Naiv definition af $L$
+\pause\item \textbf{Første problem}: Kvantorer over formler - det giver ingen mening!
+\pause\item Fix: Lav formler om til mængder
+\pause\item \textbf{Andet problem}: Mængder kan ikke være sande eller falske - det giver stadig ingen mening!
+\pause\item Fix: Lav en formel $\mathsf{Sat}(M,\ulcorner\varphi\urcorner,\overline{x},y)$, som fortæller om $\varphi(y,\overline{x})$ er sand i $M$
+\pause\item Formel definition af $L$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vi bygger et univers}
+\begin{itemize}
+\item \textbf{Tredje problem}: Er den naive og formelle definition den samme?
+\end{itemize}
+
+\pause\begin{block}{Tarski's udefinérbarhedssætning}
+\pause Sandhed kan ikke defineres internt i et system. \pause Mere specifikt, så findes der ikke en formel $True(x)$, som opfylder $True(\ulcorner\varphi\urcorner)\leftrightarrow\varphi$ for alle formler $\varphi$ i en model $M$.
+\end{block}
+
+\begin{itemize}
+\pause\item Fix: Absoluthed af $\mathsf{Sat}$
+\begin{itemize}
+	\pause\item $\mathsf{Sat}$ er absolut, så $Sat(M,\ulcorner\varphi\urcorner,\overline{x},y)\Leftrightarrow M\models\varphi(y,\overline{x})$
+	\pause\item $L_\alpha\models\varphi\Leftrightarrow L\models\varphi$ for $\alpha$ grænse
+	\pause\item Hvis $\varphi$ kun har bundne kvantorer, gælder $L_\alpha\models\varphi\Leftrightarrow\varphi$ for alle $\alpha\in\textsf{On}$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interlude}
+Hvordan definerer vi $\mathsf{Sat}(u,\varphi)$ som en formel?
+
+\pause\begin{align*}
+&(u\neq\emptyset)\land Fml(\varphi,u)\land\exists f\exists g[Finseq(f)\land Finseq (g)\\
+&\land (dom(f)=dom(g))\land(\varphi\in g(||g||))\land\forall\psi(\psi\in f(0)\leftrightarrow PFml(\psi,u))\\
+&\land\forall\psi(\psi\in g(0)\leftrightarrow E(\psi,u))\land(\forall j\in dom(f))(\forall i\in j)(\forall\psi)(\psi\in f(i+1)\\
+&\leftrightarrow (\psi\in f(i))\lor(\exists\theta,\theta'\in f(i))F_\land(\psi,\theta,\theta')\lor(\exists\theta\in f(i))F_\lnot(\psi,\theta)\\
+&\lor(\exists\theta\in f(i))(\exists v\in ran(\psi))(Vbl(v)\land F_\in(\psi,v,\theta))]\land(\forall j\in dom(g))\\
+&(\forall i\in j)(\forall\psi)[\psi\in g(i+1)\leftrightarrow(\psi\in g(i))\lor(\exists\theta,\theta'\in g(i))F_\land(\psi,\theta,\theta')\\
+&\lor(\exists\theta\in f(i))(\theta\notin g(i)\land F_\lnot(\psi,\theta))\lor(\exists\theta\in f(i))(\exists v\in ran(\psi))(\exists x\in u)\\
+&(\exists\theta'\in g(i))[Vbl(v)\land F_\exists(\psi,v,\theta)\land Sub(\theta',\theta,v,\dot{x})]]]
+\end{align*}
+
+\pause ``It is easily seen that the above formula does define the satisfaction relation."
+\end{frame}
+
+\begin{frame}{$L$ mener selv at den er alt der findes}
+\pause\begin{block}{Lemma}
+Formlen $``x=L_\alpha"$ er absolut.
+\end{block}
+
+\pause\begin{block}{Lemma}
+$L^L=L$.
+\end{block}
+
+\pause\begin{block}{Sætning}
+$ZF\proves (V=L)^L$.
+\end{block}
+
+\pause\begin{block}{Korollar}
+Hvis $ZF$ er konsistent, er $ZF+(V=L)$ også konsistent.
+\end{block}
+\end{frame}
+
+\begin{frame}{Herfra kan vi gå på opdagelse i vores nye univers}
+\begin{center}
+\includegraphics[scale=0.13]{Explore.jpg}
+\end{center}
+\end{frame}
+
+\end{document}

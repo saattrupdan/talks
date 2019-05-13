@@ -1,0 +1,153 @@
+\documentclass{beamer}
+\usetheme{Berkeley}
+\usepackage[utf8x]{inputenc}
+\newcommand{\godel}[1]{\ulcorner #1 \urcorner}
+
+\title[Truth]{Truth}
+\author{Dan Saattrup Nielsen}
+\date{February 26, 2016}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\section{What is truth?}
+\begin{frame}{What is truth?}
+  \begin{itemize}
+    \item A definition of truth?\pause
+    \item ``There is a person in this room''\pause
+    \item ``This dress is white and gold''\pause
+    \item ``That guy is pretty''\pause
+    \item \textit{Absolute} and \textit{relative} truth
+  \end{itemize}
+\end{frame}
+
+\section{Math truth?}
+\begin{frame}{Mathematical truth}
+  \begin{itemize}
+    \item Absolute mathematical truth?\pause
+    \begin{itemize}
+      \item Checking...
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Intermezzo: Gödel encoding}
+  \pause
+  $$\begin{array}{c|c}
+    \text{logical symbol} & \text{natural number}\\\hline
+    ( & 0\\
+    ) & 1\\
+    \land & 2\\
+    \lor & 3\\
+    \lnot & 4\\
+    \to & 5\\
+    \forall & 6\\
+    \exists & 7\\
+    \in & 8\\
+    = & 9\\
+    \text{variables } v_i & 10+i
+  \end{array}$$
+
+  \begin{itemize}
+    \pause\item Write $\godel{-}$ as the corresponding number
+    \pause\item For a formula $\varphi=s_0\cdots s_n$, set $\godel{\varphi}=p_0^{\godel{s_0}}\cdots p_n^{\godel{s_n}}$
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Mathematical truth}
+  \begin{itemize}
+    \item Absolute mathematical truth?
+    \begin{itemize}
+      \item Checking... \pause No! (Proven by Tarski in 1936)\pause
+      \item Or rather, not definable \textit{within} mathematics itself\pause
+    \end{itemize}
+    \item What about if we step \textit{outside} of mathematics?
+  \end{itemize}
+\end{frame}
+
+
+\section{Tarski's truth}
+\begin{frame}{Tarski's definition of truth}
+  \pause\begin{block}{Definition (Tarski, 1935)}
+    For a \textit{set} $M$, a formula $\varphi(v_0,\hdots,v_n)$ and $x_0,\hdots,x_n\in M$, we can define the truth relation $M\models\varphi[x_0,\hdots,x_n]$ as follows:
+    \begin{itemize}
+      \pause\item If $\varphi$ is $v_0\in v_1$ then $M\models\varphi[\vec x]$ iff $x_0\in x_1$;
+      \pause\item If $\varphi$ is $v_0=v_1$ then $M\models\varphi[\vec x]$ iff $x_0=x_1$;
+      \pause\item If $\varphi$ is $\psi\land\chi$ then $M\models\varphi[\vec x]$ iff $M\models\psi[\vec x]$ and $M\models\chi[\vec x]$;
+      \pause\item If $\varphi$ is $\lnot\psi$ then $M\models\varphi[\vec x]$ iff $M\not\models\psi[\vec x]$;
+      \pause\item If $\varphi$ is $\exists w\psi$ then $M\models\varphi[\vec x]$ iff there exists $y\in M$ such that $M\models\psi[y,\vec x]$.
+    \end{itemize}
+  \end{block}
+  
+\only<8-8>{Note that this is definable \textit{inside} mathematics!\\}
+\only<9-9>{For $M$ any collection, we have to go \textit{outside} mathematics}
+  
+\end{frame}
+
+\begin{frame}{Tarski's definition of truth}
+  \begin{itemize}
+    \item Taking $M$ to be the collection of all sets implies that $M\models\varphi$ means ``$\varphi$ is true''; i.e. \textit{absolute truth}!
+  \end{itemize}
+  \pause It turns out that this definition is ``the right one'':
+  \begin{block}{(A variant of) Gödel's Completeness Theorem (1929)}
+    \pause Let $\varphi$ be any formula. Then we can prove $\varphi$ iff $M\models\varphi$ for all sets $M$ satisfying $\text{ZFC}$.
+  \end{block}
+
+  \pause Note: we cannot prove that $M\models\text{ZFC}$, for \textit{any} set $M$.
+\end{frame}
+
+\section{Strange truth}
+\begin{frame}{Some fun with truth}
+  For $x\in M$, let's ``close $\{x\}$ under truth''\pause
+  \begin{block}{Fact}
+    For any formula $\varphi(v_0,\hdots,v_n)$ there exists a function $f_{\varphi}:M^n\to M$ such that for every $\vec x\in M^n$, either
+$$M\models\varphi[f_{\varphi}(\vec{x}),\vec x]\quad\text{or}\quad M\models\lnot\exists v:\varphi[v,\vec x]$$.
+  \end{block}\pause
+
+Define now
+\begin{align*}
+F_0&:=\{x\}\\
+\uncover<4->{F_{n+1}&:=\{f_\varphi(\vec y) \mid y_i\in F_n\land\varphi\text{ is a formula}\}\\}
+\uncover<5->{\mathcal H_x&:=\bigcup_{n\in\mathbb N}F_n}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Some fun with truth}
+  \begin{block}{Facts about $\mathcal H_x$}
+    \begin{itemize}
+      \item $\mathcal H_x\models\varphi[x]$ iff $M\models\varphi[x]$;
+      \pause\item $\mathcal H_x$ is countable.
+    \end{itemize}
+  \end{block}
+
+  \pause Is this strange?
+
+  \pause\begin{block}{The Skolem paradox (1922)}
+    Let $M$ be a ``sufficiently big" set, such that $\mathbb R\in M$ and $M\models``\mathbb R\text{ is uncountable}"$. By the above fact, $\mathcal H_{\mathbb R}$ satisfies this as well. \pause But then $\mathcal H_{\mathbb R}$ is a \textit{countable} set with an \textit{uncountable} element!
+  \end{block}
+
+  \pause Is this really a paradox? \pause No! Truth is \textit{relative}
+
+\end{frame}
+
+\section{Recap}
+\begin{frame}{Our journey in truth}
+  \begin{itemize}
+    \pause\item Absolute mathematical truth is not definable inside mathematics
+    \pause\item Relative mathematical truth \textit{can} be defined inside mathematics
+    \pause\item Truth can really mess with your mind
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The end of the journey}
+  \begin{center}
+    {\Large Thank you!}
+  \end{center}
+\end{frame}
+
+\end{document}

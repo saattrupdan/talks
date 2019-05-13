@@ -1,0 +1,171 @@
+\documentclass{beamer}
+\usetheme{Berkeley}
+\usepackage[utf8x]{inputenc}
+\usepackage{changepage}
+\usepackage{tikz}
+\DeclareMathOperator{\proves}{\vdash}
+\renewcommand{\models}{\vDash}
+\newcommand{\godel}[1]{\ulcorner #1 \urcorner}
+\beamertemplatenavigationsymbolsempty
+
+\title[Ufuldstæn-dighed]{Ufuldstændighed i matematik}
+\author{Dan Saattrup Nielsen}
+\date{}
+
+\begin{document}
+
+{\setbeamertemplate{background canvas}{\tikz[remember picture,overlay,shift={(current page.center)}]\node[opacity=0.5] at (4.9,-3) {\includegraphics[scale=0.3]{UNF.png}};}
+
+\begin{frame}
+  \maketitle
+\end{frame}}
+
+\section{Starten}
+\begin{frame}{Hvor det hele startede}
+  \begin{itemize}
+    \item ``Jeg lyver''
+    \begin{itemize}
+      \pause\item Paradoks, altså hverken sandt eller falsk
+    \end{itemize}
+    \pause\item ``Du kan ikke bevise at jeg taler sandt''
+    \begin{itemize}
+      \pause\item Paradoks? \pause Niks!
+      \pause\item \textit{Sandt}, men \textit{ubeviseligt}
+    \end{itemize}
+    \pause\item Hvad er ``jeg'' overhovedet?
+  \end{itemize}
+\end{frame}
+
+\section{Hvad er jeg?}
+\begin{frame}{Lad os forstå jeg}
+  \begin{itemize}
+    \item Hvordan kan et udsagn referere til sig selv?
+    \pause\item ``Sætningen ``Denne sætning har fem ord'' har fem ord''\pause .. er \textit{sand}, men refererer ikke til sig selv
+    \pause\item ``Sætningen ``Denne sætning har ti ord'' har ti ord''\pause .. er \textit{falsk}, og refererer stadig ikke til sig selv!
+    \pause\item Er selvreference umuligt? \pause Både nej og ja!
+  \end{itemize}
+\end{frame}
+
+\section{Den gode idé}
+\begin{frame}{Nøglen}
+  \begin{itemize}
+    \item Den gode idé: referér til en \textit{opskrift} fremfor selve udsagnet
+    \pause\item ``Hvis du erstatter `matematik` med `et eller andet mærkeligt` i ``Lige nu laver vi matematik'', får du et sandt udsagn''
+    \pause\item Men denne opskrift refererer jo ikke til sig selv!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Den snedige formulering}
+  \begin{itemize}
+    \item Lad $\color{blue}Q$ være udsagnet:
+    \begin{adjustwidth}{0.5cm}{0pt}
+    {\small\color{darkgray}
+      Hvis du erstatter $`x`$ i ``Du kan ikke bevise $x$'' med {\color{red}$P$}, så kan du ikke bevise det
+    }
+    \end{adjustwidth}
+    hvor {\color{red} $P$} her er en variabel i $\color{blue} Q$
+    \pause\item Hvad hvis vi sætter $\color{red} P$ til at være $\color{blue} Q$?
+    \pause\item Lad $\color{green}G$ være udsagnet:
+    \begin{adjustwidth}{0.5cm}{0pt}
+    {\small\color{darkgray}
+      Hvis du erstatter $`{\color{red}P}`$ i $\color{blue}Q$ med $\color{blue}Q$, så kan du ikke bevise det
+    }
+    \end{adjustwidth}
+    \pause\item Hvorfor virker $\color{green}G$?
+  \end{itemize}
+\end{frame}
+
+\section{Matematik?}
+\begin{frame}{Hvad er det vi laver?}
+  \begin{itemize}
+    \item Er det her matematik? \pause Niks!
+    \pause\item Vi vil gerne \textit{gøre} det til matematik
+    \pause\item Idé: Lav udsagn om til \textit{tal}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sprog og tal hænger sammen}
+  \begin{center}
+  \begin{tabular}{lc}
+    Sprog & Tal\\\hline
+    ``.. og ..'' & 1\\
+    ``.. eller ..'' & 2\\
+    ``hvis .. så ..'' & 3\\
+    ``det gælder ikke at ..'' & 4\\
+    ``der eksisterer ..'' & 5\\
+    ``.. er lig med ..'' & 6\\
+    ``x'' & 7\\
+    ``y'' & 8\\
+    ``z'' & 9\\
+    \vdots & \vdots
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Sprog og tal hænger sammen}
+  \begin{itemize}
+    \item Vi vil også gerne knytte tal til \textit{udsagn}, som fx ``$x$ er lig med $x$''
+    \pause\item Numerér primtallene som $p_1,p_2,\hdots$
+    \pause\item Tag ``$x$ er lig med $x$'', som svarer til tallene $7$, $6$ og $7$
+    \pause\item Dette svarer til tallet $p_1^7p_2^6p_3^7$, som er $2^73^65^7=7.290.000.000$
+    \pause\item Skriv nu $\godel{\text{$x$ er lig med $x$}}$ for tallet $7.290.000.000$
+  \end{itemize}
+\end{frame}
+
+\section{Den gode idé igen}
+\begin{frame}{Oversættelsen}
+  \begin{itemize}
+    \item Husk på vores tidligere udsagn $\color{blue}Q$:
+    \begin{adjustwidth}{0.5cm}{0pt}
+    {\small\color{darkgray}
+      Hvis du erstatter $`x`$ i ``Du kan ikke bevise $x$'' med {\color{red}$P$}, så kan du ikke bevise det
+    }
+    \end{adjustwidth}
+    \begin{itemize}
+      \pause\item Skriv $\color{red} p$ for tallet $\godel{{\color{red} P}}$
+    \end{itemize}
+    \pause\item Vi kan nu `talificere' den til følgende formel $\color{blue}\hat Q$:
+    \begin{adjustwidth}{0.5cm}{0pt}
+    {\small\color{darkgray}
+      Hvis du erstatter $`x`$ i udsagnet der svarer til tallet $\godel{\text{Du kan ikke bevise $x$}}$, med udsagnet der svarer til tallet $\color{red}p$, så kan du ikke bevise det
+    }
+    \end{adjustwidth}
+    \begin{itemize}
+      \pause\item Bemærk at $\color{blue}\hat Q$ i princippet kun handler om \textit{tal}!
+      \pause\item Skriv $\color{blue} q$ for tallet $\godel{{\color{blue}\hat Q}}$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Oversættelsen}
+  \begin{itemize}
+  \item Lad nu $\color{green}\hat G$ være udsagnet
+    \begin{adjustwidth}{0.5cm}{0pt}
+    {\small\color{darkgray}
+      Hvis du erstatter $`{\color{red} p}`$ i udsagnet der svarer til tallet $\color{blue}q$ med $\color{blue}q$, så kan du ikke bevise det
+    }
+    \end{adjustwidth}
+    \begin{itemize}
+      \pause\item Igen handler $\color{green}\hat G$ kun om \textit{tal}
+      \pause\item Skriv $\color{green}g$ for tallet $\godel{{\color{green}\hat G}}$
+    \end{itemize}
+  \pause\item Bemærk at vi før viste at $\small\color{gray}{\color{green}g}=\godel{\text{Udsagnet der svarer til tallet } {\color{green}g}\text{ kan ikke bevises}}$
+    \pause\item Vi har altså et \textit{matematisk} udsagn, som siger at det ikke kan bevises!
+    \pause\item Men nu vil $\color{green}\hat G$ præcis være et formelt matematisk udsagn der er \textit{sandt}, men \textit{ubeviseligt}
+  \end{itemize}
+\end{frame}
+
+\section{Slutresultatet}
+\begin{frame}{Gödels sætning}
+  \begin{block}{Ufuldstændighedssætningen}
+    Sålænge vores formelle matematiske system kan arbejde med tal, så vil der altid findes sande, men ubeviselige matematiske udsagn.
+  \end{block}
+  \begin{itemize}
+    \pause\item En sjov konsekvens: Der vil aldrig kunne findes en computer, der kan lave matematik for os
+  \end{itemize}
+  \begin{center}
+    \pause\LARGE Tak for opmærksomheden!
+  \end{center}
+\end{frame}
+
+\end{document}

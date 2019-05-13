@@ -1,0 +1,264 @@
+\documentclass[11pt,a4paper,oneside,final]{article} % change 'draft' to 'final' before final printing
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%% \Packages %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[T1]{fontenc} %non-English hyphenation (orddeling)
+%\usepackage[applemac]{inputenc} %lets you write Ê¯Â∆ÿ≈ in the tex-file
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{textcomp}
+\usepackage[english]{babel} %change 'danish' to 'english' if writing in English
+\usepackage{amsmath,amsfonts,amssymb,amsthm} %AMS' packages for symbols, theorems etc.
+\usepackage[final]{graphicx} %for including figures (\includegraphics)
+\usepackage{showkeys} %shows labels/references when in draft mode (you choose between 'draft' and 'final' in \documentclass). You may want to add notref and notcite: \usepackage[notref,notcite]{showkeys}
+
+
+\usepackage{amsbsy}  
+\usepackage{mathrsfs} 
+%\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz} 
+\usetikzlibrary{matrix,arrows}
+
+\usepackage{euler}		% mathematics font
+%\usepackage{concrete}
+%\usepackage{palatino,eulervm}
+\usepackage[sc,osf]{mathpazo} % add possibly `sc` and `osf` options
+\usepackage{eulervm}
+
+%\pagestyle{myheadings}
+%\markboth{\thetitle}{\chaptername}
+
+\usepackage[hmargin={39mm,39mm}]{geometry}%vmargin={32mm,32mm}]{geometry}      %vmargin={32mm,32mm}]{geometry}
+
+ 
+
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+
+% The following code have been found in Peter Wilsons Memoir manual in chapter 7 (page127)
+%\makepagestyle{YourPagestyleName} % Create a new pagestyle
+
+% Following code to edit the pagestyle
+%\makepsmarks{YourPagestyleName}{%
+%\nouppercaseheads
+
+% This is where we specify what \leftmark and \rightmark contains
+%\createmark{chapter}{both}{shownumber}{}{\space}
+%\createmark{section}{right}{shownumber}{}{\space}
+% Change "shownumber" to "nonumber" if you don't want
+%   the chapter/section number displayed at the header.
+
+%\createplainmark{toc}{both}{\contentsname}
+%\createplainmark{lof}{both}{\listfigurename}
+%\createplainmark{lot}{both}{\listtablename}
+%\createplainmark{bib}{both}{\bibname}
+%\createplainmark{index}{both}{\indexname}
+%\createplainmark{glossary}{both}{\glossaryname}}
+% Might want to keep those, see the manual for further information.
+
+% The following is where you tweek your header
+%\makeevenhead{YourPagestyleName}{%      % For verso pages
+%\normalfont\bfseries\thepage}{}{\normalfont\bfseries\leftmark}
+%\makeoddhead{YourPagestyleName}{%       % For recto pages
+%\normalfont\bfseries\rightmark}{}{\normalfont\bfseries\thepage}
+
+% Activate your new pagestyle
+%\pagestyle{YourPagestyleName}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%% End \Packages %%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+%\numberwithin{thm}{chapter}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{cor}{Corollary} 
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{exx}{Example}
+\theoremstyle{thm}
+\newtheorem*{prop}{Proposition}
+\theoremstyle{remark}
+\newtheorem*{warning}{Warning!}
+\newtheorem*{Exercise}{Exercise}
+\newtheorem*{notation}{Notation}
+\newtheorem*{question}{Question}
+\newtheorem*{solution}{Solution}
+
+
+\newcommand{\A}{\mathcal A}
+\newcommand{\BB}{{\mathbb B}}
+\newcommand{\B}{\mathfrak B}
+\newcommand{\CC}{{\mathbb C}}
+\newcommand{\Cfrak}{\mathfrak C}
+\newcommand{\C}{\mathcal C}
+\newcommand{\CCP}{\mathbb{C}P}
+\newcommand{\D}{\mathcal D}
+\newcommand{\DD}{{\mathbb D}}
+\newcommand{\FF}{{\mathbb F}}
+\newcommand{\F}{\mathcal F}
+\newcommand{\K}{\mathcal K} 
+\newcommand{\LL}{\mathscr L}
+\newcommand{\MM}{{\mathbb M}}
+\newcommand{\M}{\mathcal M}
+\newcommand{\PO}{\mathcal P}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\R}{\mathcal R}
+\newcommand{\SSS}{\mathcal S}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\TT}{\mathscr T}
+\newcommand{\U}{\mathcal U}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\N}{{\mathcal N}}
+\newcommand{\XX}{{\mathfrak X}}
+\newcommand{\YY}{{\mathbb Y}}
+\newcommand{\ZZ}{{\mathbb Z}}
+\newcommand{\VV}{{\mathbb V}}
+\newcommand{\PP}{{\mathbb P}}
+\newcommand{\I}{\mathcal I}
+
+\newcommand{\longto}{{~ \xrightarrow{\hspace*{0.7cm}} ~ }}
+
+
+%%% Model Theory
+\newcommand{\arity}{\mathrm{arity}}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\range}{\mathrm{range}}
+\newcommand{\Str}{\mathrm{Str}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\length}{\mathrm{length}}
+\newcommand{\Th}{\mathrm{Th}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\Diag}{\mathrm{Diag}}
+\newcommand{\ZFC}{\mathrm{ZFC}}
+\newcommand{\Hen}{\mathrm{Hen}}
+\newcommand{\eldiag}{\mathrm{eldiag}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\LLinf}{\LL_{\infty \omega}}
+\newcommand{\LLfol}{\LL_{\omega \omega}}
+\newcommand{\LLcount}{\LL_{\omega_1 \omega}}
+\newcommand{\EF}{\mathrm{EF}}
+\newcommand{\age}{\mathrm{age}}
+\newcommand{\tp}{\mathrm{tp}}
+\newcommand{\qftp}{\mathrm{qf.tp}}
+\newcommand{\qr}{\mathrm{qr}}
+\newcommand{\acl}{\mathrm{acl}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\0}{{[0]}}
+\newcommand{\1}{{[1]}}
+\newcommand{\simXi}{\sim^{\Xi}}
+\newcommand{\Bi}{\Longleftrightarrow}
+\newcommand{\setm}{\setminus}
+
+
+%%% Geom2
+\newcommand{\del}{\partial}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\Gr}{\mathrm{Gr}}
+%\newcommand{\D}{\mathrm{D}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\MA}{\mathrm{MA}}
+\newcommand{\Fn}{\mathrm{Fn}}
+\newcommand{\Grpd}{Grpd}
+
+
+\let\emptyset\varnothing % change of the empty-set symbol.
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    %\ifnum \c@secnumdepth >\m@ne
+    %    \huge\bfseries \@chapapp\space \thechapter
+    %    \par\nobreak
+    %    \vskip 20\p@
+    %\fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+  \makeatother
+  
+%\setcounter{tocdepth}{4}
+%\setcounter{chapter}{-1}
+
+
+\makeatletter
+\def\imod#1{\allowbreak\mkern10mu({\operator@font mod}\,\,#1)}
+\makeatother
+
+
+\newcommand{\subs}{\subseteq}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\phi}{\varphi}
+\newcommand{\precc}{\preccurlyeq}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+\parindent1cm  
+\linespread{1.1}
+\pagenumbering{gobble}
+
+
+\title{Homotopy Type Theory \\ \Large{Student Colloquium}}
+\date{May 30th  2014,  13.15 -- 15.00 }
+
+
+%\author{Speirs, Martin} 
+\begin{document}
+\maketitle
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent Homotopy type theory is a new branch of mathematics that combines and connects aspects of several different fields (topology, logic, category theory, etc.) in surprising ways. Briefly, logical constructions correspond to homotopy-invariant constructions on spaces, while theorems and proofs in the logical system are given a homotopical meaning. 
+
+
+In the colloquium we will aim to give the audience an introduction to the ideas, methods and results of the ongoing work in this area. 
+The colloquium will consist of two talks with a break in the middle. The talks will be accessible to second year students who have seen some topology (in particular the notion of a homotopy between paths) but anyone interested is welcome!
+\\
+\\
+\noindent Intended topics will be among the following:
+\begin{itemize}[noitemsep]
+\item An introduction to \emph{type theory}, which is the general framework for the theory.
+\item A proof of the \emph{constructive axiom of choice} as it appears in the theory. 
+\item An introduction to the new \emph{axiom of univalence}, which allows one to treat isomorphic objects as identical.
+\item An introduction to \emph{higher inductive types} which give new ways of conceiving and calculating with familiar objects such as the sphere.
+\item Time permitting we will try to show some actual topological calculations such as the fundamental group of the sphere.
+\end{itemize}
+\
+\\
+\\
+\\
+\\
+\textbf{Date:} May 30th between 13.15 and 15.00\\
+\textbf{Place:} Aud. 9.
+
+
+
+\flushright / Dan and Martin
+
+
+
+\end{document}

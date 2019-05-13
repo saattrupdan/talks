@@ -1,0 +1,14 @@
+BLC 2017 ABSTRACT
+
+
+Jónsson Cardinals: a deceptive large cardinal notion
+
+Does every structure have a proper elementary substructure of the same size?
+This question --- whose answer is false --- led to the notion of a Jónsson
+cardinal, being the cardinals for which this is true. These cardinals turn out
+to exhibit strange behaviour compared to other large cardinals, as the theory
+"ZFC + there is a Jónsson cardinal" is quite strong, but a Jónsson cardinal
+itself is ostensibly very weak in terms of direct implication. I will talk a
+bit about this asymmetry in strength and zoom in on the problem of determining
+the direct implication strength, leading to a special relationship between
+Jónsson cardinals and weakly compact cardinals.

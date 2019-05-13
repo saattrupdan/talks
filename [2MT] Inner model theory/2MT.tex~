@@ -1,0 +1,62 @@
+\input{beamersetup.tex}
+
+\title{{\scshape\small Two Minute Talk}\\ The Skolem Paradox}
+\author{Dan Saattrup Nielsen}
+\date{\small May 23, 2017}
+
+\begin{document}
+
+{\setbeamertemplate{background canvas}{\tikz[remember picture,overlay,shift={(current page.center)}]\node[opacity=0.7] at (4.5,-4) {\includegraphics[scale=0.15]{UoBlogo.png}};}
+
+\begin{frame}
+  \maketitle
+\end{frame}}
+
+\begin{frame}{The universe}
+  \begin{center}
+    \includegraphics[scale=0.08]{gfx/universe.jpg}
+  \end{center}
+\end{frame}
+
+\begin{frame}{The universe we care about}
+  \begin{center}
+    \includegraphics[scale=1.5]{gfx/maths_universe.jpeg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{The universe we care about.. is BIG!}
+  \begin{center}
+    \includegraphics[scale=1.5]{gfx/maths_universe_2.jpeg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{The universe we care about.. could be countable}
+  \begin{center}
+    \includegraphics[scale=1]{gfx/maths_universe_3.jpeg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Wait a minute..}
+  \begin{center}
+    \includegraphics[scale=1]{gfx/maths_universe_4.jpeg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{The solution!}
+  \begin{center}
+    \includegraphics[scale=1]{gfx/maths_universe_5.jpeg}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Morale of the story}
+  \begin{center}
+    \includegraphics[scale=0.65]{gfx/truth.jpg}
+  \end{center}
+\end{frame}
+
+\end{document}
