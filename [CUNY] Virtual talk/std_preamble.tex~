@@ -287,6 +287,7 @@
   \DeclareMathOperator{\diam}{diam}
   \DeclareMathOperator{\hod}{HOD}
   \DeclareMathOperator{\od}{OD}
+  \DeclareMathOperator{\codom}{codom}
   \DeclareMathOperator{\Det}{Det}
   \DeclareMathOperator{\len}{len}
   \DeclareMathOperator{\ma}{MA}
