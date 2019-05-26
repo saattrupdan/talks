@@ -332,10 +332,10 @@ Input File::pdftex.def::0::0::Input File
 LaTeX Font Warning::virtual.tex::73::0::Font shape `OT1/cmss/b/n' undefined using `OT1/cmss/m/n' instead.
 Input File::pdftex.def::0::0::Input File
 Input File::pdftex.def::0::0::Input File
-Package Info::virtual.tex::99::0::Empty hook `BeforeClearDocument'. (atveryend)
-Package Info::virtual.tex::99::0::Empty hook `AfterLastShipout'. (atveryend)
+Package Info::virtual.tex::115::0::Empty hook `BeforeClearDocument'. (atveryend)
+Package Info::virtual.tex::115::0::Empty hook `AfterLastShipout'. (atveryend)
 Input File::virtual.aux::0::0::Input File
-Package Info::virtual.tex::99::0::Executing hook `AtVeryEndDocument'. (atveryend)
-Package Info::virtual.tex::99::0::Executing hook `AtEndAfterFileList'. (atveryend)
+Package Info::virtual.tex::115::0::Executing hook `AtVeryEndDocument'. (atveryend)
+Package Info::virtual.tex::115::0::Executing hook `AtEndAfterFileList'. (atveryend)
 Package Info::virtual.tex::0::0::File `virtual.out' has not changed. Checksum: D41D8CD98F00B204E9800998ECF8427E;0. (rerunfilecheck)
 LaTeX Font Warning::virtual.tex::0::0::Some font shapes were not available, defaults substituted.
