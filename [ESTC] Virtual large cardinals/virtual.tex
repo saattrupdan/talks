@@ -1,8 +1,6 @@
 \documentclass{beamer}
-\usetheme{Boadilla}
-\setbeamertemplate{navigation symbols}{}
+\usetheme[block=fill]{metropolis}
 
-\usepackage[light]{antpolt}
 \usepackage{hyperref}
 \usepackage{tikz}
 
@@ -22,10 +20,10 @@
 {
 \setbeamertemplate{background canvas}{
   \tikz[remember picture, overlay]
-  \node[opacity=0.5] at (7.2, -7.5){
-    \includegraphics[width = 3.5cm]{gfx/alumni.png}
-    \hspace{3.0cm}
-    \includegraphics[width = 6cm]{gfx/epsrc.jpg}
+  \node[opacity=0.4] at (9.0, -6.5){
+    \includegraphics[width = 3.0cm]{gfx/alumni.png}
+    \hspace{-1.2cm}
+    \includegraphics[width = 5cm]{gfx/epsrc.jpg}
   };
 }
 
@@ -40,7 +38,7 @@
   \end{block}
 
   \begin{center}
-    \includegraphics[scale=0.17]{gfx/virtual.jpg}
+    \includegraphics[scale=0.15]{gfx/virtual.jpg}
   \end{center}
 \end{frame}
 
@@ -50,7 +48,7 @@
   \end{block}
 
   \begin{center}
-    \includegraphics[scale=0.17]{gfx/generic.jpg}
+    \includegraphics[scale=0.15]{gfx/generic.jpg}
   \end{center}
 \end{frame}
 
@@ -105,18 +103,7 @@
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{How do they behave?}
-  \begin{block}{Theorem (Gitman)}
-    Virtually strongs are equivalent to virtually supercompacts.
-  \end{block}
-
-
-  \begin{block}{Theorem (N.)}
-    Virtually measurables are equiconsistent with virtually strongs.
-  \end{block}
-   
-  \pause
-
+\begin{frame}{How do they behave level by level?}
   \begin{block}{Theorem (Schindler-N.)}
     $\kappa$ is generically $\theta$-measurable iff II wins $\mathcal{C}_\omega^\theta(\kappa)$.
   \end{block}
