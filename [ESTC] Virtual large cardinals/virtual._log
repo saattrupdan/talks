@@ -339,12 +339,12 @@ Input File::ot1mathkerncmss.fd::0::0::Input File
 Input File::pdftex.def::0::0::Input File
 Input File::pdftex.def::0::0::Input File
 Input File::pdftex.def::0::0::Input File
-LaTeX Font Warning::virtual.tex::104::0::Font shape `OT1/cmss/m/sc' in size <10.95> not available Font shape `OT1/cmr/m/sc' tried instead.
+LaTeX Font Warning::virtual.tex::110::0::Font shape `OT1/cmss/m/sc' in size <10.95> not available Font shape `OT1/cmr/m/sc' tried instead.
 Input File::pdftex.def::0::0::Input File
-Package Info::virtual.tex::146::0::Empty hook `BeforeClearDocument'. (atveryend)
-Package Info::virtual.tex::146::0::Empty hook `AfterLastShipout'. (atveryend)
+Package Info::virtual.tex::140::0::Empty hook `BeforeClearDocument'. (atveryend)
+Package Info::virtual.tex::140::0::Empty hook `AfterLastShipout'. (atveryend)
 Input File::virtual.aux::0::0::Input File
-Package Info::virtual.tex::146::0::Executing hook `AtVeryEndDocument'. (atveryend)
-Package Info::virtual.tex::146::0::Executing hook `AtEndAfterFileList'. (atveryend)
+Package Info::virtual.tex::140::0::Executing hook `AtVeryEndDocument'. (atveryend)
+Package Info::virtual.tex::140::0::Executing hook `AtEndAfterFileList'. (atveryend)
 Package Info::virtual.tex::0::0::File `virtual.out' has not changed. Checksum: D41D8CD98F00B204E9800998ECF8427E;0. (rerunfilecheck)
 LaTeX Font Warning::virtual.tex::0::0::Some font shapes were not available, defaults substituted.
