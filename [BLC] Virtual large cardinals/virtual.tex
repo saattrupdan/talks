@@ -127,7 +127,7 @@
 
 \begin{frame}{Berkeley cardinals}
   \begin{block}{Definition}
-    $\delta$ is \textbf{virtually berkeley} if for every transitive set $\M$ there exists a generic elementary embedding $\pi\colon\M\to\M$ with $\crit\pi<\delta$.
+    $\delta$ is \textbf{virtually proto-berkeley} if for every transitive set $\M$ there exists a generic elementary embedding $\pi\colon\M\to\M$ with $\crit\pi<\delta$. Further, $\delta$ is \textbf{virtually berkeley} if the critical point can be chosen to be arbitrarily large below $\delta$.
   \end{block}
 
   \only<2>{The real world versions of these are of course inconsistent with $\zfc$, but are currently being investigated in a choiceless context.}
@@ -139,7 +139,7 @@
   }
 
   \onslide<4->{
-    \begin{block}{Theorem (N.)}
+    \begin{block}{Theorem (Dimopoulos-Gitman-N.)}
       The following are equivalent:
       \begin{itemize}
         \item $\on$ is virtually prewoodin iff it is virtually woodin
@@ -149,10 +149,113 @@
   }
 \end{frame}
 
+\begin{frame}{Outline of argument}
+
+  \begin{block}{Definition}
+    \textbf{Generic Vop\v enka's Principle} (\gvp) holds if for every class $C$ consisting of set-sized structures in a common language, there are distinct $\M,\N\in C$ and a generic elementary embedding $\pi\colon\M\to\N$.
+  \end{block}
+
+  \pause 
+
+  \begin{block}{Theorem (Dimopoulos-Gitman-N.)}
+    $\on$ is virtually prewoodin iff \gvp\ holds.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Outline of argument cont.}
+  \begin{block}{Definition (\gbc)}
+    Say that an $\on$-sequence $\bra{\M_\alpha\mid\alpha<\on}$ is \textbf{natural} if there exists a class function $f\colon\on\to\on$ such that $f(\alpha)>\alpha$ and $f(\alpha)\leq f(\beta)$ for every $\alpha<\beta$, and unary relations $R_\alpha\subset V_{f(\alpha)}$ such that
+    \eq{
+      \M_\alpha = (V_{f(\alpha)}, \in, \{\alpha\}, R_\alpha)
+    }
+
+    for every $\alpha$.
+  \end{block}
+
+  \pause
+
+  \begin{block}{Definition (\gbc)}
+    Define the \textbf{virtually vop\v enka filter} $F$ on $\on$ as $X\in F$ iff there's a natural $\on$-sequence $\vec\M$ such that for any $\alpha<\beta$ and any generic elementary $\pi\colon\M_\alpha\to\M_\beta$, $\crit\pi\in X$.
+  \end{block}
+
+  \pause
+
+  This filter is normal, and proper iff \gvp\ holds.
+
+\end{frame}
+
+\begin{frame}{Outline of argument cont.}
+
+  \begin{block}{Definition (\gbc)}
+    Define the \textbf{virtually vop\v enka filter} $F$ on $\on$ as $X\in F$ iff there's a natural $\on$-sequence $\vec\M$ such that for any $\alpha<\beta$ and any generic elementary $\pi\colon\M_\alpha\to\M_\beta$, $\crit\pi\in X$.
+  \end{block}
+
+  \pause
+
+  \begin{block}{Key Lemma (N.)}
+    Assume \gvp\ and that there are no virtually berkeley cardinals. Then the virtually vop\v enka filter on $\on$ contains every class club.
+  \end{block}
+
+  \pause
+
+  \begin{block}{Theorem (N.)}
+    If there are no virtually berkeley cardinals then \gvp\ implies that $\on$ is virtually woodin.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Outline of argument cont.}
+  \begin{block}{Theorem (N.)}
+    If there are no virtually berkeley cardinals then \gvp\ implies that $\on$ is virtually woodin.
+  \end{block}
+
+  \pause
+
+  This, together with the equivalence of \gvp\ and $\on$ being virtually woodin, gives us one direction of our theorem.
+\end{frame}
+
+\begin{frame}{Outline of argument cont.}
+
+  For the other direction we have the following:
+
+  \begin{block}{Theorem (N.)}
+    If there exists a virtually berkeley cardinal then \gvp\ holds and $\on$ is not mahlo.
+  \end{block}
+
+  \pause
+
+  Virtually woodins are mahlo, and we (finally!) have our theorem:
+
+  \begin{block}{Theorem (Dimopoulos-Gitman-N.)}
+    The following are equivalent:
+    \begin{itemize}
+      \item $\on$ is virtually prewoodin iff it is virtually woodin
+      \item There are no virtually berkeley cardinals
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{An extra consequence}
+  A result that occured along the way:
+
+  \begin{block}{Theorem (N.)}
+    The following are equivalent:
+    \begin{itemize}
+      \item There is a virtually berkeley cardinal;
+      \item \gvp\ holds and $\on$ is not mahlo.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  This improves a result by Gitman and Hamkins (2019).
+\end{frame}
+
 \begin{frame}{Open questions}
   \begin{block}{Question}
     Is the existence of a virtually berkeley cardinal equivalent to the statement that, for every class $A$, every virtually $A$-prestrong cardinal is virtually $A$-strong?
   \end{block}
+
+  \pause
 
   \begin{block}{Question}
     Are virtually $\omega$-superstrongs equivalent to virtually berkeleys?
