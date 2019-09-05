@@ -1,0 +1,235 @@
+% Document definition
+\documentclass{beamer}
+\usetheme[block=fill]{metropolis}
+
+% Packages
+% General packages
+  \usepackage[light]{antpolt} % Provides awesome font
+  \usepackage{hyperref} % Provides \url and clickable links in the pdf
+
+  % Math packages
+  \usepackage{amsmath, amssymb, amsfonts} % Math symbolic jargon
+  \usepackage{amsthm} % Theorem environment
+  \usepackage{mathrsfs}	% Provides the \mathscr{} curly font
+  \usepackage{stmaryrd}	% Provides the \lightning symbol
+
+  % Diagrams
+  \usepackage{tikz} % Awesome diagrams
+    \usetikzlibrary{cd} % Commutative diagrams 
+  \usepackage[all]{xy} % Provides xymatrix environment for diagrams
+		
+% User-defined commands
+  % General things	
+  \newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+  \newcommand{\eqq}[1]{\begin{align*} #1\\ \end{align*}}
+  \newcommand{\pix}[2][1]{\begin{center}\includegraphics[scale=#1]{#2}\\\end{center}}
+  \newcommand{\cd}[1]{\eq{\xymatrix{#1}}}
+
+  % Declared operators
+  \DeclareMathOperator{\dirlim}{dirlim}
+  \DeclareMathOperator{\iterates}{I}
+  \DeclareMathOperator{\code}{Code}
+  \DeclareMathOperator{\piterates}{pI}
+  \DeclareMathOperator{\blowups}{B}
+  \DeclareMathOperator{\pblowups}{pB}
+  \DeclareMathOperator{\lhod}{\triangleleft_{\mathrm{HOD}}}
+  \DeclareMathOperator{\lehod}{\trianglelefteq_{\mathrm{HOD}}}
+  \DeclareMathOperator{\ledj}{\le_{\mathrm{DJ}}}
+  \DeclareMathOperator{\nledj}{\not{\le}_{\mathrm{DJ}}}
+  \DeclareMathOperator{\ldj}{<_{\mathrm{DJ}}}
+  \DeclareMathOperator{\di}{\textsf{DI}}
+  \DeclareMathOperator{\hc}{\textsf{HC}}
+  \DeclareMathOperator{\M}{\mathcal M}
+  \DeclareMathOperator{\N}{\mathcal N}
+  \DeclareMathOperator{\K}{\mathcal K}
+  \DeclareMathOperator{\F}{\mathcal F}
+  \DeclareMathOperator{\Q}{\mathcal Q}
+  \DeclareMathOperator{\W}{\mathcal W}
+  \DeclareMathOperator{\V}{\mathcal V}
+  \DeclareMathOperator{\T}{\mathcal T}
+  \DeclareMathOperator{\U}{\mathcal U}
+  \DeclareMathOperator{\B}{\mathcal B}
+  \DeclareMathOperator{\R}{\mathcal R}
+  \DeclareMathOperator{\D}{\mathcal D}
+  \DeclareMathOperator{\G}{\mathcal G}
+  \DeclareMathOperator{\C}{\mathcal C}
+  \DeclareMathOperator{\A}{\mathcal A}
+  \DeclareMathOperator{\h}{\mathcal H}
+  \DeclareMathOperator{\I}{\mathcal I}
+  \DeclareMathOperator{\core}{\mathfrak C}
+  \DeclareMathOperator{\mc}{\textsf{MC}}
+  \DeclareMathOperator{\refl}{Refl}
+  \DeclareMathOperator{\pp}{pp}
+  \DeclareMathOperator{\rk}{rk}
+  \DeclareMathOperator{\otp}{otp}
+  \DeclareMathOperator{\pr}{pr}
+  \DeclareMathOperator{\lp}{Lp}
+  \DeclareMathOperator{\In}{in}
+  \DeclareMathOperator{\sgn}{sgn}
+  \DeclareMathOperator{\lcm}{lcm}
+  \DeclareMathOperator{\ran}{ran}
+  \DeclareMathOperator{\cod}{cod}
+  \DeclareMathOperator{\dom}{dom}	
+  \DeclareMathOperator{\cond}{cond}
+  \DeclareMathOperator{\con}{Con}
+  \DeclareMathOperator{\rank}{rank}
+  \DeclareMathOperator{\gal}{Gal}
+  \DeclareMathOperator{\cov}{Cov}
+  \DeclareMathOperator{\im}{im}
+  \DeclareMathOperator{\add}{Add}
+  \DeclareMathOperator{\supp}{supp}
+  \DeclareMathOperator{\sub}{Sub}
+  \DeclareMathOperator{\diam}{diam}
+  \DeclareMathOperator{\hod}{HOD}
+  \DeclareMathOperator{\od}{OD}
+  \DeclareMathOperator{\codom}{codom}
+  \DeclareMathOperator{\Det}{Det}
+  \DeclareMathOperator{\len}{len}
+  \DeclareMathOperator{\ma}{MA}
+  \DeclareMathOperator{\id}{id}
+  \DeclareMathOperator{\sing}{Sing}
+  \DeclareMathOperator{\pred}{pred}
+  \DeclareMathOperator{\cl}{cl}
+  \DeclareMathOperator{\Int}{int}
+  \DeclareMathOperator{\ob}{Ob}
+  \DeclareMathOperator{\mor}{Mor}
+  \DeclareMathOperator{\sh}{Sh}
+  \DeclareMathOperator{\ot}{ot}
+  \DeclareMathOperator{\ult}{Ult}
+  \DeclareMathOperator{\sg}{sg}
+  \DeclareMathOperator{\env}{Env}
+  \DeclareMathOperator{\tor}{Tor}
+  \DeclareMathOperator{\ext}{Ext}
+  \DeclareMathOperator{\comp}{\textsf{Comp}}
+  \DeclareMathOperator{\card}{card}
+  \DeclareMathOperator{\Card}{Card}
+  \DeclareMathOperator{\cf}{cf}
+  \DeclareMathOperator{\cof}{cof}
+  \DeclareMathOperator{\cc}{\text{\textasciicircum}}
+  \DeclareMathOperator{\sk}{sk}
+  \DeclareMathOperator{\crit}{crit}
+  \DeclareMathOperator{\cls}{cls}
+  \DeclareMathOperator{\pd}{pd}
+  \DeclareMathOperator{\ev}{ev}
+  \DeclareMathOperator{\wo}{WO}
+  \DeclareMathOperator{\wfp}{wfp}
+  \DeclareMathOperator{\xor}{\oplus}
+  \DeclareMathOperator{\nor}{\downarrow}
+  \DeclareMathOperator{\nand}{\uparrow}
+  \DeclareMathOperator{\biglor}{\bigvee}
+  \DeclareMathOperator{\bigland}{\bigwedge}
+  \DeclareMathOperator{\Lr}{\Leftrightarrow}
+  \DeclareMathOperator{\lr}{\leftrightarrow}
+  \DeclareMathOperator{\ip}{\perp\!\!\!\perp}
+  \DeclareMathOperator{\psubset}{\subsetneq}
+  \DeclareMathOperator{\psupset}{\supsetneq}
+  \DeclareMathOperator{\elsub}{\preceq}
+  \DeclareMathOperator{\elsup}{\succeq}
+  \DeclareMathOperator{\pelsub}{\prec}
+  \DeclareMathOperator{\pelsup}{\succ}
+  \DeclareMathOperator{\contr}{\lightning}
+  \DeclareMathOperator{\proves}{\vdash}
+  \DeclareMathOperator{\nproves}{\nvdash}
+  \DeclareMathOperator{\nmodels}{\nvDash}
+  \DeclareMathOperator{\forces}{\Vdash}
+  \DeclareMathOperator{\nforces}{\nVdash}
+  \DeclareMathOperator{\adj}{\dashv}
+  \DeclareMathOperator{\restr}{\upharpoonright}
+  \DeclareMathOperator{\ex}{\underline{ex}}
+  \DeclareMathOperator{\st}{\underline{st}}
+  \DeclareMathOperator{\sv}{\underline{sv}}
+  \DeclareMathOperator{\tl}{\underline{tl}}
+  \DeclareMathOperator{\tensor}{\otimes}
+  \DeclareMathOperator{\monus}{\dotdiv}
+  \DeclareMathOperator{\Null}{\textsf{NULL}}
+  \DeclareMathOperator{\nat}{Nat}
+  \DeclareMathOperator{\col}{Col}
+  \DeclareMathOperator{\Root}{root}
+  \DeclareMathOperator{\aut}{Aut}
+  \DeclareMathOperator{\spec}{spec}
+  \DeclareMathOperator{\sq}{Sq}
+  \DeclareMathOperator{\ann}{ann}
+  \DeclareMathOperator{\proj}{proj}
+  \DeclareMathOperator{\ffrac}{Frac}
+  \DeclareMathOperator{\hull}{Hull}
+  \DeclareMathOperator{\chull}{cHull}
+  \DeclareMathOperator{\lh}{lh}
+  \DeclareMathOperator{\Def}{Def}
+  \DeclareMathOperator{\Span}{span}
+  \DeclareMathOperator{\form}{Form}
+  \DeclareMathOperator{\tc}{trcl}
+
+
+  % Redeclared operators
+  \renewcommand{\B}{\mathbb B}
+  \renewcommand{\P}{\mathcal P}
+  \renewcommand{\S}{\mathcal S}
+	\renewcommand{\succ}{\text{succ}}
+	\renewcommand{\pr}{\text{Pr}}
+  \renewcommand{\subset}{\subseteq}
+  \renewcommand{\supset}{\supseteq}
+  \renewcommand{\hom}{\text{Hom}}
+	\renewcommand{\index}{\text{index }}
+  \renewcommand{\a}{\b{a}}
+	\renewcommand{\r}{{^\omega\omega}}
+	\renewcommand{\l}{|}
+
+  % Convenient shortcuts
+	\newcommand{\E}{\vec E}
+	\newcommand{\bSigma}{\utilde{\b\Sigma}}
+	\newcommand{\bPi}{\utilde{\b\Pi}}
+	\newcommand{\p}{\mathscr P}
+	\newcommand{\pistol}{\mathparagraph}
+  \newcommand{\pmax}{\mathbb{P}_{\text{max}}}
+	\newcommand{\mw}{\mathcal{M}_{\textsf{mw}}^\sharp}
+  \newcommand{\vto}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+  \newcommand{\game}[8]{\eq{\begin{array}{ccccccccc} \text{I} & #1 && #3 && #5 && #7\\ \text{II} && #2 && #4 && #6 && #8 \end{array}}}
+  \newcommand{\vtre}[3]{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+  \newcommand{\mto}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}}
+  \newcommand{\mtre}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}}
+  \newcommand{\bra}[1]{\langle #1\rangle}
+  \newcommand{\dbra}[1]{\llbracket #1 \rrbracket}
+  \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+  \newcommand{\abs}[1]{\left|#1\right|}
+  \newcommand{\later}{{\vartriangleright}}
+  \newcommand{\normal}{\unlhd}
+  \newcommand{\ideal}{\unlhd}
+  \newcommand{\rel}{\ \text{rel}\ }
+  \newcommand{\pnormal}{\mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+  \newcommand{\pideal}{\mathrel{\ooalign{$\lneq$\cr\raise.22ex\hbox{$\lhd$}\cr}}}
+  \newcommand{\acts}{\curvearrowright}
+  \newcommand{\colimm}{\varinjlim}
+  \newcommand{\limm}{\varprojlim}
+  \newcommand{\eff}{\mathcal{E}\! f\! f}
+  \newcommand{\set}{\textsf{Set}}
+  \newcommand{\fin}{\textsf{Fin }}
+  \newcommand{\Top}{\textsf{Top}}
+  \newcommand{\zf}{\textsf{ZF}}
+  \newcommand{\zfc}{\textsf{ZFC}}
+  \newcommand{\vp}{\textsf{VP}}
+  \newcommand{\gvp}{\textsf{gVP}}
+  \newcommand{\on}{\textsf{On}}
+  \newcommand{\wvp}{\textsf{WVP}}
+  \newcommand{\gwvp}{\textsf{gWVP}}
+  \newcommand{\gbc}{\textsf{GBC}}
+  \newcommand{\km}{\textsf{KM}}
+  \newcommand{\ch}{\textsf{CH}}
+  \newcommand{\gch}{\textsf{GCH}}
+  \newcommand{\ad}{\textsf{AD}}
+  \newcommand{\ac}{\textsf{AC}}
+  \newcommand{\dc}{\textsf{DC}}
+  \newcommand{\cat}{\textsf{Cat}}
+  \newcommand{\grp}{\textsf{Grp}}
+  \newcommand{\shc}{\mathcal{SHC}}
+  \newcommand{\sset}{\textsf{sSet}}
+  \newcommand{\gset}{$G$\textsf{Set}}
+  \newcommand{\ab}{\textsf{Ab}}
+  \newcommand{\godel}[1]{\ulcorner #1 \urcorner}
+  \newcommand{\circled}[1]{\raisebox{-0.5pt}{\textcircled{\raisebox{-0.5pt} {{\scriptsize #1}}}}}
+  \newcommand{\rmod}{{_R\textsf{Mod}}}
+  \newcommand{\modr}{{\textsf{Mod}_R}}
+  \newcommand{\lex}{<_{\text{lex}}}
+  \newcommand{\po}{\ar@{}[dr]|{\text{\pigpenfont R}}}
+  \newcommand{\pb}{\ar@{}[dr]|{\text{\pigpenfont J}}}
+  \newcommand{\init}{\unlhd}	
+  \newcommand{\pinit}{\lhd}	
