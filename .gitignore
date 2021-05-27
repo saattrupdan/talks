@@ -1,6 +1,8 @@
-*_log
-*.aux
-*.log
-*.nav
-*.toc
-*_aux
+**/*_log
+**/*.aux
+**/*.log
+**/*.nav
+**/*.toc
+**/*_aux
+**/*.swp
+.DS_Store
